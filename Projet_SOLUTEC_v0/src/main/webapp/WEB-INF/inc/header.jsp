@@ -5,11 +5,11 @@
 </head>
 <body>
 <header>
-	<img src="img/logo.jpg" alt="Logo SOLUTEC" />
-	<h1>Titre provisoire</h1>
-	<a href="${pageContext.request.contextPath}"><img src="img/home.png"/></a> 
-	<a href="${requestScope['javax.servlet.forward.request_uri']}?lang=fr"><img src="img/fr.png"/></a>
-	<a href="${requestScope['javax.servlet.forward.request_uri']}?lang=en"><img src="img/en.png"/></a>
+	<a href="${pageContext.request.contextPath}"><img src="img/logo_SOLUTEC.png" alt="Logo SOLUTEC" class="logo"/></a>
+	<a class="titre">Titre provisoire</a>
+	<a href="${pageContext.request.contextPath}"><img class="drapeau" src="img/home.png" /></a> 
+	<a href="${requestScope['javax.servlet.forward.request_uri']}?lang=fr"><img class="drapeau" src="img/fr.png"/></a>
+	<a href="${requestScope['javax.servlet.forward.request_uri']}?lang=en"><img class="drapeau" src="img/en.png"/></a>
 	<ul>
   		<li><a class="active" href="#home">Home</a></li>
   		<li><a href="#allarticles">Tous les articles</a></li>

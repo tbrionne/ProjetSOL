@@ -2,6 +2,7 @@ body {
 	margin:0;
 }
 
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -9,7 +10,7 @@ ul {
   overflow: hidden;
   background-color: #333;
   position: fixed;
-  top: 0;
+  top: 30;
   width: 100%;
 }
 
@@ -27,6 +28,21 @@ li a {
 
 li a:hover:not(.active) {
   background-color: #111;
+}
+
+.drapeau {
+	height: 30px;
+	width: 30px;
+	text-align: right;
+}
+
+.logo {
+	height: 70px;
+}
+
+.titre {
+	font: serif;
+	font-size: 40px;	
 }
 
 .active {
