@@ -1,0 +1,112 @@
+/* Heander */
+header {
+	background-color: rgb(3, 161, 252);
+	color: white;
+	width: 100%;
+	text-align: right;
+	font-size: x-large;
+}
+
+header h1 {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+header img {
+	width: 30px;
+}
+
+/* Footer */
+footer {
+	background-color: rgb(3, 161, 252);
+	color: white;
+	width: 100%;
+	text-align: center;
+	font-size: x-small;
+	
+}
+
+/* Table */
+.table {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.table td, .table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+.table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: rgb(3, 161, 252);
+	color: white;
+}
+
+/* Formulaire */
+form input, select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+	width: 80%;
+	background-color: rgb(30, 170, 252);
+	color: white;
+	padding: 14px 20px;
+	margin: 10px 10% 10px 10%;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+form input[type=submit]:hover {
+	background-color: rgb(10, 150, 200);
+}
+
+form div {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+
+.erreur {
+	color: #D8000C;
+	background-color: #FFD2D2;
+	margin: 3px 0px;
+	padding: 3px;
+	vertical-align:middle;
+}
+
+/* Links */
+a.bouton:link, a.bouton:visited {
+  width: 200px;
+  background-color: rgb(30, 170, 252);
+  color: white;
+  padding: 14px 25px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.bouton, a.bouton:active {
+  background-color: rgb(10, 150, 200);
+}
+
+/* photos */
+.photoProfil{
+	height: 50px;
+}
