@@ -32,9 +32,9 @@
 						<td><img src="img/${p.photo}" /></td>
 						<td>
 							<ul>
-								<li>${p.produit_name}<br></li>
-								<li>${p.categorie_id}<br></li>
-								<li>${p.marque}<br></li>
+								<li>${p.produit_name}</li>
+								<li>${p.categorie_id}</li>
+								<li>${p.marque}</li>
 								<li>${p.prix}</li>
 							</ul>
 						</td>
