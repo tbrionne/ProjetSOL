@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 
@@ -37,6 +38,7 @@
     <option value="goldfish">Goldfish</option>
 </select>
 		 
+		 
 		
 
 <%-- <form:form method="POST" commandName="electromenager" action="gestionAdmin"> --%>
@@ -55,6 +57,17 @@
 
 
 <!-- 	Ajout de produits : -->
+
+<%-- 	<form:form modelAttribute="produit"> --%>
+<%-- 		<label>Nom : </label><form:input path="name"/><br> --%>
+<%-- 		<label>Categorie : </label><form:input path="idCategorie"/><br> --%>
+<%-- 		<label>Marque : </label><form:input path="marque"/><br> --%>
+<%-- 		<label>Prix : </label><form:input path="prix"/><br> --%>
+<%-- 		<label>Nom du fichier de la photo : </label><form:input path="photo"/><br> --%>
+<%-- 		<label>Classe energetique : </label><form:input path="classeEnergetique"/><br> --%>
+		
+<%-- 		<input type="submit" value='<spring:message code="b_ajout_utilisateur"/>'/><br> --%>
+<%-- 	</form:form> --%>
 
 <%-- 		<form:form modelAttribute="produit"> --%>
 <!-- 			<table> -->
@@ -87,20 +100,33 @@
 <%-- 		</form:form> --%>
 		
 <!-- 	Tableau récapitulatif des produits : -->
-<!-- 		<table border="1"> -->
-<!-- 			<tr> -->
-<!-- 				<th><s:message code="c.nom" /></th> -->
-<!-- 				<th><s:message code="c.prenom" /></th> -->
-<!-- 				<th><s:message code="c.nomDeCompte" /></th> -->
-<!-- 			</tr> -->
-<%-- 			<c:forEach items="${utilisateurs}" var="u"> --%>
-<!-- 				<tr> -->
-<%-- 					<td>${u.nom}</td> --%>
-<%-- 					<td>${u.prenom}</td> --%>
-<%-- 					<td>${u.nomDeCompte}</td> --%>
-<!-- 				</tr> -->
-<!-- 			</c:forEach> -->
-<!-- 		</table> -->
+		
+		<h3>Produits dans la base :</h3>
+		
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<th>NOM</th>
+				<th>CATEGORIE</th>
+				<th>MARQUE</th>
+				<th>PRIX</th>
+				<th>CLASSE ENERGETIQUE</th>
+				<th>PHOTO</th>
+			</tr>
+			<c:forEach items="${gestionAdmin}" var="p">
+				<tr>
+					<td>${p.idProduit}</td>
+					<td><input type="text" value="${p.name}" name="NOM" /></td>
+					<td><input type="text" value="${p.idCategorie}" name="CATEGORIE" /></td>
+					<td><input type="text" value="${p.marque}" name="MARQUE" /></td>
+					<td><input type="text" value="${p.prix}" name="PRIX" /></td>
+					<td><input type="text" value="${p.classeEnergetique}" name="CLASSE ENERGETIQUE" /></td>
+					<td><input type="text" value="${p.photo}" name="PHOTO" /></td>
+					<td><input type="submit" value="modifier"/></td>
+				</tr>
+				</form>
+			</c:forEach>
+		</table>
 		
 		
 <!-- 	Footer -->
