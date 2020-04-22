@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,11 +36,12 @@ public class ControleursAdmin {
 	
 	// Accès à la page gestionAdmin :
 	@PostMapping
-	public String getGestionAdmin(HttpServletRequest request, @ModelAttribute("admin") Admin admin) {
+	public String getGestionAdmin(HttpServletRequest request, @ModelAttribute("admin") Admin admin, Map<String, Object> model) {
 		if (request.getParameter("login").equals("admin") &&
-				request.getParameter("password").equals("SOLUTEC"))
+				request.getParameter("password").equals("SOLUTEC")) {
+			model.put("gestionAdmin", produitRepository.findAll());
 			return "gestionAdmin";
-		else
+	} else
 			return "accueilAdmin";
 	} 
 	
@@ -56,12 +58,12 @@ public class ControleursAdmin {
 	}
 	
 	
-	// Affichage de tous les produits :
-	@GetMapping(path="/gestionProduits")
-	public String getProduits(Map<String, Object> model) {
-		model.put("gestionAdmin", produitRepository.findAll());
-		return "gestionAdmin";
-		}
+//	// Affichage de tous les produits :
+//	@GetMapping(path="/")
+//	public String getProduits(Map<String, Object> model) {
+//		model.put("gestionAdmin", produitRepository.findAll());
+//		return "gestionAdmin";
+//		}
 	
 //	// Création des catégories d'electroménager :
 //    @RequestMapping(value="/gestionAdmin")

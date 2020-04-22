@@ -12,13 +12,6 @@
 	
 	
 <!-- 	Body : -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 	<h3>Page gestionAdmin</h3>
 		
@@ -115,14 +108,13 @@
 			</tr>
 			<c:forEach items="${gestionAdmin}" var="p">
 				<tr>
-					<td>${p.idProduit}</td>
-					<td><input type="text" value="${p.name}" name="NOM" /></td>
-					<td><input type="text" value="${p.idCategorie}" name="CATEGORIE" /></td>
+					<td>${p.produit_id}</td>
+					<td><input type="text" value="${p.produit_name}" name="NOM" /></td>
+					<td><input type="text" value="${p.categorie_id}" name="CATEGORIE" /></td>
 					<td><input type="text" value="${p.marque}" name="MARQUE" /></td>
 					<td><input type="text" value="${p.prix}" name="PRIX" /></td>
-					<td><input type="text" value="${p.classeEnergetique}" name="CLASSE ENERGETIQUE" /></td>
+<%-- 					<td><input type="text" value="${p.classe_energetique_id}" name="CLASSE ENERGETIQUE" /></td> --%>
 					<td><input type="text" value="${p.photo}" name="PHOTO" /></td>
-					<td><input type="submit" value="modifier"/></td>
 				</tr>
 				</form>
 			</c:forEach>

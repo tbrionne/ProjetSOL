@@ -11,13 +11,6 @@
 	
 	
 <!-- 	Body : -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 	<h3>Page admin</h3>
 		
