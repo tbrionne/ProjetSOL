@@ -15,7 +15,6 @@ header {
 }
 
 .logo {
-	position: absolute;
 	top: 0px;
 	left: 0px;
 	height: 80px;
@@ -124,3 +123,24 @@ article{
 	height: 20px;
 	width: 20px;
 }
+
+/*selection curseur sur les boutons categories*/
+
+
+
+.tdCat:hover
+{
+	cursor: pointer; 
+	background-color:gray; 
+	text-align:center;
+	 
+}
+
+.tdCat
+{
+	border-radius: 10px; 
+	width:25%; 
+	background-color:#e90649; 
+	text-align:center
+}
+
