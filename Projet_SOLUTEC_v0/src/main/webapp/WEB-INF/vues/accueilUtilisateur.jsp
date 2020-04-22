@@ -7,13 +7,13 @@
 	<%@include file="/WEB-INF/inc/header.jsp" %>
 	
 	
-		<div>
-		<table border="1" style=" width:25% ;margin:0">
+		<div style="display:grid">
+		<table border="1">
 			<tr>
-				<td><a href="#frigo"><img src="img/frigo.jpg" alt="Réfrigérateur" class="img_accueil"></a></td>
-				<td><a href="#lavaiss"><img src="img/lavevaisselle.jpg" alt="Lave-vaisselle" class="img_accueil"></a></td>
-				<td><a href="#four"><img src="img/four.jpg" alt="Four" class="img_accueil"></a></td>
-				<td><a href="#plaques"><img src="img/plaquescuisson.jpg" alt="Plaques de cuisson" class="img_accueil"></a></td>
+				<td style=" width:25%"><a href="#frigo"><img src="img/frigo.jpg" alt="Réfrigérateur" class="img_accueil"></a></td>
+				<td style=" width:25%"><a href="#lavaiss"><img src="img/lavevaisselle.jpg" alt="Lave-vaisselle" class="img_accueil"></a></td>
+				<td style=" width:25%"><a href="#four"><img src="img/four.jpg" alt="Four" class="img_accueil"></a></td>
+				<td style=" width:25%"><a href="#plaques"><img src="img/plaquescuisson.jpg" alt="Plaques de cuisson" class="img_accueil"></a></td>
 			</tr>
 		</table>
 		</div>
