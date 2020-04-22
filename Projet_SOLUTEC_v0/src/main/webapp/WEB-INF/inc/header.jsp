@@ -9,7 +9,7 @@
 			<a href="${pageContext.request.contextPath}"><img class="logo" src="img/logo_SOLUTEC.png" alt="Logo SOLUTEC"/></a>
 			
 			<h1 class="titre">Titre provisoire</h1>
-		</header>
+		</header> 
 		
 		<object style="position: fixed; top: 15px; right: 15px;">
 			<a href="${pageContext.request.contextPath}"><img class="drapeau" src="img/home.png" /></a> 
