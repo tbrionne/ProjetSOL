@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="css/utilisateur.css">
@@ -13,11 +14,37 @@
 		<div class="filtre">Prix</div>
 	</div>
 	<div class="content">
-		<article>
-			<h1>Produit 1</h1>
-			<p>Caractéristiques produit</p>
-			<p>photo produit</p>
-		</article>
+
+		<!-- 				<tr> -->
+		<!-- 					<th>Nom</th> -->
+		<!-- 					<th>Catégorie</th> -->
+		<!-- 					<th>Marque</th> -->
+		<!-- 					<th>Prix</th> -->
+		<!-- 					<th>Photo</th> -->
+		<!-- 					<th>Classe énergétique</th> -->
+		<!-- 				</tr> -->
+		<!-- tableau qui va afficher les utilisateurs enregistrés
+		dans la base de données grâce à une boucle forEach -->
+		<c:forEach items="${catalogueProduits}" var="p">
+			<article>
+				<Table border="1">
+					<tr>
+						<td><img src="img/${p.photo}" /></td>
+						<td>
+							<ul>
+								<li>${p.produit_name}<br></li>
+								<li>${p.categorie_id}<br></li>
+								<li>${p.marque}<br></li>
+								<li>${p.prix}</li>
+							</ul>
+						</td>
+
+						<%-- 						<td>${p.classe_energetique_id}</td> --%>
+					</tr>
+				</Table>
+			</article>
+		</c:forEach>
+
 		<article>
 			<h1>Produit 2</h1>
 			<p>Caractéristiques produit</p>
