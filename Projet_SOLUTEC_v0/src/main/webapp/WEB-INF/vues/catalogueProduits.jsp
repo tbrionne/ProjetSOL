@@ -36,10 +36,10 @@
 								<li>${p.categorie_id}</li>
 								<li>${p.marque}</li>
 								<li>${p.prix}</li>
+<%-- 								<li>${p.classe_energetique_id}</li> --%>
 							</ul>
 						</td>
 
-						<%-- 						<td>${p.classe_energetique_id}</td> --%>
 					</tr>
 				</Table>
 			</article>
