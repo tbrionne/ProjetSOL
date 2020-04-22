@@ -10,10 +10,10 @@
 		<div style="display:grid">
 		<table border="1" bordercolor="white" bgcolor="white" width="100%">
 			<tr>
-				<td class="tdCat" border="10" ><a href="#frigo"><img src="img/frigoR.jpg" alt="Réfrigérateur" class="img_accueil"></a><h2>Frigo</h2></td>
-				<td class="tdCat" border="10"><a href="#lavaiss"><img src="img/lavevaisselleR.jpg" alt="Lave-vaisselle" class="img_accueil"></a><h2>Lave Vaisselle</h2></td>
-				<td class="tdCat" border="10"><a href="#four"><img src="img/four.jpg" alt="Four" class="img_accueil"></a><h2>Four</h2></td>
-				<td class="tdCat" border="10"><a href="#plaques"><img src="img/plaquescuissonR.jpg" alt="Plaques de cuisson" class="img_accueil"></a><h2>Plaque de cuisson</h2></td>
+				<td class="tdCat" border="10" ><a href="catalog"><img src="img/frigoR.jpg" alt="Réfrigérateur" class="img_accueil"></a><h2>Frigo</h2></td>
+				<td class="tdCat" border="10"><a href="catalog"><img src="img/lavevaisselleR.jpg" alt="Lave-vaisselle" class="img_accueil"></a><h2>Lave Vaisselle</h2></td>
+				<td class="tdCat" border="10"><a href="catalog"><img src="img/four.jpg" alt="Four" class="img_accueil"></a><h2>Four</h2></td>
+				<td class="tdCat" border="10"><a href="catalog"><img src="img/plaquescuissonR.jpg" alt="Plaques de cuisson" class="img_accueil"></a><h2>Plaque de cuisson</h2></td>
 			</tr>
 		</table>
 		</div>

@@ -34,7 +34,7 @@ h1.titre {
 	margin: 10px;
 }
 
-ul {
+nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -45,11 +45,11 @@ ul {
   width: 100%;
 }
 
-li { 
+nav li { 
   float: left;
 }
 
-li a { 
+nav li a { 
   display: block;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
@@ -58,7 +58,7 @@ li a {
   text-decoration: none;
 }
 
-li a:hover:not(.active) {
+nav li a:hover:not(.active) {
   background-color: #111;
 }
 
