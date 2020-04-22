@@ -28,7 +28,7 @@ public class Produit {
 	private String photo;
 	//@ManyToOne
 	@Column(name = "CLASSE_ENERGETIQUE_ID", nullable=false)
-	private ClasseEnergetique classeEnergetique;
+	private String classeEnergetique;
 	
 	//Getters and setters
 	
@@ -38,10 +38,10 @@ public class Produit {
 	public void setIdProduit(Integer idProduit) {
 		this.idProduit = idProduit;
 	}
-	public ClasseEnergetique getClasseEnergetique() {
+	public String getClasseEnergetique() {
 		return classeEnergetique;
 	}
-	public void setClasseEnergetique(ClasseEnergetique classeEnergetique) {
+	public void setClasseEnergetique(String classeEnergetique) {
 		this.classeEnergetique = classeEnergetique;
 	}
 	public String getName() {
