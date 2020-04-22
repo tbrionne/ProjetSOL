@@ -36,7 +36,7 @@
     <option value="spider">Spider</option>
     <option value="goldfish">Goldfish</option>
 </select>
-		
+		 
 		
 
 <%-- <form:form method="POST" commandName="electromenager" action="gestionAdmin"> --%>

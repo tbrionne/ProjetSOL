@@ -36,7 +36,7 @@ public class ControleursAdmin {
 			return "gestionAdmin";
 		else
 			return "accueilAdmin";
-	}
+	} 
 	
 	// Ajout d'un produit :
 	@GetMapping(path="/adminGestion")

@@ -23,7 +23,7 @@
 		
 		<form:form modelAttribute="admin">
 			<table>
-				<tr>
+				<tr> 
 					<td>Login: </td>
 					<td><form:input path="login" /></td>
 				<tr>
