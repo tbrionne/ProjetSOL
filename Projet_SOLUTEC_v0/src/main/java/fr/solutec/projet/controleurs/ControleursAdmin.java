@@ -5,21 +5,26 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.solutec.projet.modeles.Admin;
 import fr.solutec.projet.modeles.Categorie;
 import fr.solutec.projet.modeles.Produit;
+import fr.solutec.projet.modeles.ProduitRepository;
 
 @Controller
 @RequestMapping(path="/admin")
 public class ControleursAdmin {
 
+	@Autowired 
+	  private ProduitRepository produitRepository;
 	
 			
 	// Appel de la page d'accueil admin :
@@ -38,12 +43,25 @@ public class ControleursAdmin {
 			return "accueilAdmin";
 	} 
 	
-	// Ajout d'un produit :
-	@GetMapping(path="/adminGestion")
-//	@RequestMapping("adminGestion")
-	public String getProduit(@ModelAttribute("produit") Produit produit) {
-		return "gestionAdmin";
+//	// Ajout d'un produit :
+//	@GetMapping(path="/gestionProduits")
+//	public String getProduit(@ModelAttribute("produit") Produit produit) {
+//		return "gestionAdmin";
+//	}
+	
+	// Affichage des produits sans filtre:
+	@GetMapping(path="/produits")
+	public @ResponseBody Iterable<Produit> getAllUsers() {
+		return produitRepository.findAll();  
 	}
+	
+	
+	// Affichage de tous les produits :
+	@GetMapping(path="/gestionProduits")
+	public String getProduits(Map<String, Object> model) {
+		model.put("gestionAdmin", produitRepository.findAll());
+		return "gestionAdmin";
+		}
 	
 //	// Création des catégories d'electroménager :
 //    @RequestMapping(value="/gestionAdmin")
