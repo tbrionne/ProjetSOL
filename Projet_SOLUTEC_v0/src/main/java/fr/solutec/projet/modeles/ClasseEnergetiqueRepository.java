@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ClasseEnergetiqueRepository extends CrudRepository<ClasseEnergetique, Integer>{
 	
-//	@Query("SELECT DISTINCT ce.classe_energetique_name FROM ClasseEnergetique ce ORDER BY ce.classe_energetique_name")
-//	Collection<String> selectClasseEnergetique();
+	@Query("SELECT C.nomClasseEnergetique FROM ClasseEnergetique C ")
+	Collection<Object> selectClasseEnergetiqueName();
 
 }
