@@ -9,8 +9,20 @@
 <div class="container">
 	<div class="aside">
 		<h1>Filtres</h1>
-		<div class="filtre">Marque</div>
-		<div class="filtre">Classe Energétique</div>
+		<div class="filtre">Marque
+			<c:forEach items="${marques}" var="m">
+				<ul>
+					<li>${m}</li>
+				</ul>
+			</c:forEach>
+		</div>
+		<div class="filtre">Classe Energétique
+			<c:forEach items="${classesEnergetiques}" var="ce">
+				<ul>
+					<li>${ce}</li>
+				</ul>
+			</c:forEach>
+		</div>
 		<div class="filtre">Prix</div>
 	</div>
 	<div class="content">

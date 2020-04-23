@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import fr.solutec.projet.modeles.ClasseEnergetiqueRepository;
 import fr.solutec.projet.modeles.Produit;
 import fr.solutec.projet.modeles.ProduitRepository;
 
@@ -20,7 +20,9 @@ import fr.solutec.projet.modeles.ProduitRepository;
 @RequestMapping(path="/")
 public class ControleurUtilisateurs {
 	@Autowired 
-	  private ProduitRepository produitRepository;
+	private ProduitRepository produitRepository;
+	@Autowired
+	private ClasseEnergetiqueRepository classeEnergetiqueRepository;
 	
 	@GetMapping
 	public String getIndex() {
@@ -29,13 +31,15 @@ public class ControleurUtilisateurs {
 	
 	@GetMapping(path="/catalog")
 	  public String getCatalogProduits(@ModelAttribute("produit")Produit produit, BindingResult result, Map<String, Object> model) {
+		model.put("marques", produitRepository.selectMarque());
+		model.put("classesEnergetiques", produitRepository.selectClasseEnergetique());
 		model.put("catalogueProduits", produitRepository.findAll());
 		  return "catalogueProduits";
 	  }
 	@PostMapping(path="/catalog")
 	  public String setUtilisateur(@ModelAttribute("produit")Produit produit,HttpServletRequest request, Map<String, Object> model) {
 		  produit.setProduit_name(request.getParameter("name"));
-		  produit.setCategorie_id(request.getParameter("idCategorie"));
+//		  produit.setCategorie_id(request.getParameter("idCategorie"));
 		  produit.setMarque(request.getParameter("marque"));
 		  produit.setPrix(request.getParameter("prix"));
 		  produit.setPhoto(request.getParameter("photo"));
