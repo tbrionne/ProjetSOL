@@ -13,7 +13,7 @@
 			Marque<br>
 			<c:forEach items="${marques}" var="m">
 				<input type="checkbox" id="{m}" name="${m}">
-				<label for="{m}">${m}</label>
+				<label for="{m}">${m}</label><br>
 				<br>
 			</c:forEach>
 		</div>
@@ -21,11 +21,22 @@
 			Classe Energétique<br>
 			<c:forEach items="${classesEnergetiques}" var="ce">
 				<input type="checkbox" id="{ce}" name="${ce}">
-				<label for="{ce}">${ce}</label>
+				<label for="{ce}">${ce}</label><br>
 				<br>
 			</c:forEach>
 		</div>
-		<div class="filtre">Prix</div>
+		<div class="filtre">
+			Prix<br>
+			<input type="checkbox" id="prix1" name="orix1">
+			<label for="prix1">0 - 100 €</label><br>
+			<input type="checkbox" id="prix2" name="prix2">
+			<label for="prix2">100 - 500 €</label><br>
+			<input type="checkbox" id="prix3" name="prix3">
+			<label for="prix3">500 - 1000 €</label><br>
+			<input type="checkbox" id="prix4" name="prix4">
+			<label for="prix4"> + 1000 €</label><br>
+		</div>
+		<button type="submit">Rechercher</button>
 	</div>
 	<div class="content">
 
