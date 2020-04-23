@@ -27,9 +27,9 @@
 	<nav>
 		<ul>
 			<li><a href="catalog">Tous les articles</a></li>
-			<li><a href="catalog">Réfrigérateur</a></li>
-			<li><a href="catalog">Lave-vaisselle</a></li>
-			<li><a href="catalog">Four</a></li>
-			<li><a href="catalog">Plaques de cuisson</a></li>
+			<li><a href="catalog?critere=frigo">Réfrigérateur</a></li>
+			<li><a href="catalog?critere=lave-vaisselle">Lave-vaisselle</a></li>
+			<li><a href="catalog?critere=four">Four</a></li>
+			<li><a href="catalog?critere=plaques">Plaques de cuisson</a></li>
 		</ul>
 	</nav>

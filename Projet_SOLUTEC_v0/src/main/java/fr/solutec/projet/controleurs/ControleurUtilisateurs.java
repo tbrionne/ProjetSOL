@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import fr.solutec.projet.modeles.CategorieRepository;
 import fr.solutec.projet.modeles.ClasseEnergetiqueRepository;
 import fr.solutec.projet.modeles.Produit;
 import fr.solutec.projet.modeles.ProduitRepository;
@@ -23,6 +24,8 @@ public class ControleurUtilisateurs {
 	private ProduitRepository produitRepository;
 	@Autowired
 	private ClasseEnergetiqueRepository classeEnergetiqueRepository;
+	@Autowired
+	private CategorieRepository categorieRepository;
 	
 	@GetMapping
 	public String getIndex() {
@@ -30,10 +33,22 @@ public class ControleurUtilisateurs {
 	}
 	
 	@GetMapping(path="/catalog")
-	  public String getCatalogProduits(@ModelAttribute("produit")Produit produit, BindingResult result, Map<String, Object> model) {
+	  public String getCatalogProduits(Map<String, Object> model, HttpServletRequest request) {
+		if(request.getParameter("critere")!=null) {
+	    	 if( request.getParameter("critere").equals("frigo"))
+	    		 model.put("categorie", categorieRepository.selectCategorie1()); 
+	    	 if( request.getParameter("critere").equals("lave-vaisselle"))
+	    		 model.put("categorie", categorieRepository.selectCategorie2());
+	    	 if( request.getParameter("critere").equals("four"))
+	    		 model.put("categorie", categorieRepository.selectCategorie3());
+	    	 if( request.getParameter("critere").equals("plaques"))
+	    		 model.put("categorie", categorieRepository.selectCategorie4());
+	     }
+	     else {
+	    	 model.put("categorie", produitRepository.findAll()); 
+	     }
 		model.put("marques", produitRepository.selectMarque());
 		model.put("classesEnergetiques", produitRepository.selectClasseEnergetique());
-		model.put("catalogueProduits", produitRepository.findAll());
 		  return "catalogueProduits";
 	  }
 	@PostMapping(path="/catalog")

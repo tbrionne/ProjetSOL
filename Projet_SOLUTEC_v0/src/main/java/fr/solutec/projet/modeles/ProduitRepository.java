@@ -19,5 +19,6 @@ public interface ProduitRepository extends CrudRepository<Produit, Integer>{
 	
 	@Query("SELECT DISTINCT p.classe_energetique_id FROM Produit p ORDER BY p.classe_energetique_id")
 	Collection<String> selectClasseEnergetique();
+	
 
 }
