@@ -13,41 +13,95 @@
 	
 <!-- 	Body : -->
 
-	<h3>Page gestionAdmin</h3>
+			<form action="admin/ajouter" method="POST">
+		<tr>
+
+<!-- 			<td>CATEGORIE<input type="number"  name="categorie_id"/></td> <br> -->
+			<td><label for="categorie">Catégories :</label>
+				<select name="categorie_id" id="categorie">
+				    <option value="">-Choisissez une catégorie-</option>
+				    <option value="1">Réfrigérateur</option>
+				    <option value="2">Lave-vaisselle</option>
+				    <option value="3">Four</option>
+				    <option value="4">Plaque de cuisson</option>
+				</select></td> <br>
+			<td>NOM PRODUIT<input type="text"  name="produit_name"/></td> <br> 
+			<td>MARQUE<input type="text"  name="marque"/></td>   <br>
+			<td>PRIX<input type="text"  name="prix"/></td> <br>
+			<td>PHOTO<input type="text"  name="photo"/></td>  <br> 
+<!-- 			<td>CLASSE ENERGETIQUE<input type="text"  name="classe_energetique_id"/></td>  -->
+			
+			<td><input type="submit" value="AJOUTER CE PRODUIT"/></td>		 
+		</tr>
 		
+	</form>	
+	
+	
+	<!-- 	Tableau récapitulatif des produits : -->
+		
+		<h3>Produits dans la base :</h3>
+		
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<th>NOM</th>
+				<th>CATEGORIE</th>
+				<th>MARQUE</th>
+				<th>PRIX</th>
+<!-- 				<th>CLASSE ENERGETIQUE</th> -->
+				<th>PHOTO</th>
+			</tr>
+			<c:forEach items="${gestionAdmin}" var="p">
+				<tr>
+					<td>${p.produit_id}</td>
+					<td><input type="text" value="${p.produit_name}" name="NOM" /></td>
+					<td><input type="text" value="${p.categorie_id}" name="CATEGORIE" /></td>
+					<td><input type="text" value="${p.marque}" name="MARQUE" /></td>
+					<td><input type="text" value="${p.prix}" name="PRIX" /></td>
+<%-- 					<td><input type="text" value="${p.classe_energetique_id}" name="CLASSE ENERGETIQUE" /></td> --%>
+					<td><input type="text" value="${p.photo}" name="PHOTO" /></td>
+					<td><a href="admin/supprimer?produit_id=${p.produit_id}">Supprimer</a></td>
+				</tr>
+				</form>
+			</c:forEach>
+		</table>
+	
+	
+	<!-- 	Footer -->
+	<%@include file="/WEB-INF/inc/footer.jsp" %>
+</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 		
 	
 <!-- 	Definition des categories : -->
 <!-- 	/!\ A enlever une fois qu'on aura résolu le problème de foreign key /!\  -->
 			
-<label for="pet-select">Choose a pet:</label>
+<!-- <label for="pet-select">Choose a pet:</label> -->
 
-<select name="pets" id="pet-select">
-    <option value="">--Please choose an option--</option>
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-</select>
+<!-- <select name="pets" id="pet-select"> -->
+<!--     <option value="">--Please choose an option--</option> -->
+<!--     <option value="dog">Dog</option> -->
+<!--     <option value="cat">Cat</option> -->
+<!--     <option value="hamster">Hamster</option> -->
+<!--     <option value="parrot">Parrot</option> -->
+<!--     <option value="spider">Spider</option> -->
+<!--     <option value="goldfish">Goldfish</option> -->
+<!-- </select> -->
 		 
-	<form action="admin/ajouter" method="POST">
-		<tr>
 
-			<td><input type="text"  name="categorie_id"/></td>
-			<td><input type="text"  name="produit_name"/></td>
-			<td><input type="text"  name="marque"/></td> 
-			<td><input type="text"  name="prix"/></td>
-			<td><input type="text"  name="photo"/></td> 
-			<td><input type="text"  name="classe_energetique_id"/></td> 
-			
-			<td><input type="submit" value="S'inscrire"/></td>		 
-		</tr>
-		
-	</form>	
-	
 	
 
 <%-- <form:form method="POST" commandName="electromenager" action="gestionAdmin"> --%>
@@ -113,36 +167,6 @@
 <!-- 		<a href="admin/ajouter"> Ajouter un produit</a> -->
 		
 		
-<!-- 	Tableau récapitulatif des produits : -->
-		
-		<h3>Produits dans la base :</h3>
-		
-		<table border="1">
-			<tr>
-				<th>ID</th>
-				<th>NOM</th>
-				<th>CATEGORIE</th>
-				<th>MARQUE</th>
-				<th>PRIX</th>
-				<th>CLASSE ENERGETIQUE</th>
-				<th>PHOTO</th>
-			</tr>
-			<c:forEach items="${gestionAdmin}" var="p">
-				<tr>
-					<td>${p.produit_id}</td>
-					<td><input type="text" value="${p.produit_name}" name="NOM" /></td>
-					<td><input type="text" value="${p.categorie_id}" name="CATEGORIE" /></td>
-					<td><input type="text" value="${p.marque}" name="MARQUE" /></td>
-					<td><input type="text" value="${p.prix}" name="PRIX" /></td>
-<%-- 					<td><input type="text" value="${p.classe_energetique_id}" name="CLASSE ENERGETIQUE" /></td> --%>
-					<td><input type="text" value="${p.photo}" name="PHOTO" /></td>
-					<td><a href="admin/supprimer?produit_id=${p.produit_id}">Supprimer</a></td>
-				</tr>
-				</form>
-			</c:forEach>
-		</table>
+
 		
 		
-<!-- 	Footer -->
-	<%@include file="/WEB-INF/inc/footer.jsp" %>
-</html>
