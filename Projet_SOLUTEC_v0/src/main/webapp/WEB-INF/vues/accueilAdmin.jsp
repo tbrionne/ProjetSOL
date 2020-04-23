@@ -7,7 +7,7 @@
 <html>
 
 <!-- 	Header : -->
-	<%@include file="/WEB-INF/inc/header.jsp" %>
+	<%@include file="/WEB-INF/inc/headerAdmin.jsp" %>
 	
 	
 <!-- 	Body : -->
