@@ -34,21 +34,20 @@ public class ControleurUtilisateurs {
 	
 	@GetMapping(path="/catalog")
 	  public String getCatalogProduits(Map<String, Object> model, HttpServletRequest request) {
-		if(request.getParameter("critere")!=null) {
-	    	 if( request.getParameter("critere").equals("frigo"))
-	    		 model.put("categorie", categorieRepository.selectCategorie1()); 
-	    	 if( request.getParameter("critere").equals("lave-vaisselle"))
-	    		 model.put("categorie", categorieRepository.selectCategorie2());
-	    	 if( request.getParameter("critere").equals("four"))
-	    		 model.put("categorie", categorieRepository.selectCategorie3());
-	    	 if( request.getParameter("critere").equals("plaques"))
-	    		 model.put("categorie", categorieRepository.selectCategorie4());
+		if(request.getParameter("critere")!=null)
+		{	    	
+	    		 model.put("categorie", categorieRepository.selectCategorie(Integer.parseInt(request.getParameter("critere")))); 	    	    	 
 	     }
-	     else {
+	     else
+	     {
 	    	 model.put("categorie", produitRepository.findAll()); 
 	     }
 		model.put("marques", produitRepository.selectMarque());
 		model.put("classesEnergetiques", produitRepository.selectClasseEnergetique());
+		model.put("nomCat", categorieRepository.selectCategorieName());
+		 
+		//System.out.println(model.get("nomCat"));
+		  
 		  return "catalogueProduits";
 	  }
 	@PostMapping(path="/catalog")

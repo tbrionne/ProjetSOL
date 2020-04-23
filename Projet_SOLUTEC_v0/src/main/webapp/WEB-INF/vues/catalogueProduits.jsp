@@ -39,10 +39,11 @@
 		<button type="submit">Rechercher</button>
 	</div>
 	<div class="content">
-
+	
 		<!-- tableau qui va afficher les utilisateurs enregistrés
 		dans la base de données grâce à une boucle forEach -->
 		<c:forEach items="${categorie}" var="p">
+		
 			<article>
 				<Table border="1">
 					<tr>
@@ -50,10 +51,11 @@
 						<td style="width: 100%">
 							<h2>${p.produit_name}</h2>
 							<ul>
-								<li>${p.categorie_id}</li>
+
+								<li> ${nomCat[p.categorie_id-1]}</li>
 								<li>${p.marque}</li>
-								<li>${p.prix}</li>
-								<%-- 								<li>${p.classe_energetique_id}</li> --%>
+								<li>${p.prix}€</li>
+								<%-- <li>${p.classe_energetique_id}</li> --%>
 							</ul>
 						</td>
 
