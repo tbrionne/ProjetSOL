@@ -11,26 +11,28 @@ import javax.persistence.Table;
 @Table(name = "ClasseEnergetique")
 public class ClasseEnergetique {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "CLASSE_ENERGETIQUE_ID", nullable=false)
-	//@OneToMany
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "CLASSE_ENERGETIQUE_ID", nullable = false)
 	private Integer idClasseEnergetique;
-	@Column(name = "CLASSE_ENERGETIQUE_NAME", nullable=false)
+	@Column(name = "CLASSE_ENERGETIQUE_NAME", nullable = false)
 	private String nomClasseEnergetique;
-	
-	//Getters and setters
-	
+
+	// Getters and setters
+
 	public Integer getIdClasseEnergetique() {
 		return idClasseEnergetique;
 	}
+
 	public void setIdClasseEnergetique(Integer idClasseEnergetique) {
 		this.idClasseEnergetique = idClasseEnergetique;
 	}
+
 	public String getNomClasseEnergetique() {
 		return nomClasseEnergetique;
 	}
+
 	public void setNomClasseEnergetique(String nomClasseEnergetique) {
 		this.nomClasseEnergetique = nomClasseEnergetique;
 	}
-	
+
 }

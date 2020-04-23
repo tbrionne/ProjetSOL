@@ -16,4 +16,9 @@ public interface ProduitRepository extends CrudRepository<Produit, Integer> {
 	@Query("SELECT p FROM Produit p WHERE p.marque = ?1")
 	Collection<Produit> selectParMarque(String s);
 
+	@Query("SELECT p FROM Produit p ORDER BY p.produit_id desc")
+	Collection<Produit> selectProduitParId();
+
+	@Query("SELECT p FROM Produit p ORDER BY p.produit_name")
+	Collection<Produit> selectProduitParNom();
 }
