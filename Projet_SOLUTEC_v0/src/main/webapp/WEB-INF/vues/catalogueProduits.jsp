@@ -9,18 +9,16 @@
 <div class="container">
 	<div class="aside">
 		<h1>Filtres</h1>
-		<div class="filtre">Marque
+		<div class="filtre">Marque<br>
 			<c:forEach items="${marques}" var="m">
-				<ul>
-					<li>${m}</li>
-				</ul>
+				<input type="checkbox" id="{m}" name="${m}">
+				<label for="{m}">${m}</label><br>
 			</c:forEach>
 		</div>
-		<div class="filtre">Classe Energétique
+		<div class="filtre">Classe Energétique<br>
 			<c:forEach items="${classesEnergetiques}" var="ce">
-				<ul>
-					<li>${ce}</li>
-				</ul>
+				<input type="checkbox" id="{ce}" name="${ce}">
+				<label for="{ce}">${ce}</label><br>
 			</c:forEach>
 		</div>
 		<div class="filtre">Prix</div>
