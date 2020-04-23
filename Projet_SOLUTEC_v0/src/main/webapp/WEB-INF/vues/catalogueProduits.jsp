@@ -9,37 +9,54 @@
 <div class="container">
 	<div class="aside">
 		<h1>Filtres</h1>
-		<div class="filtre">Marque</div>
-		<div class="filtre">Classe Energétique</div>
-		<div class="filtre">Prix</div>
+		<div class="filtre">
+			Marque<br>
+			<c:forEach items="${marques}" var="m">
+				<input type="checkbox" id="{m}" name="${m}">
+				<label for="{m}">${m}</label><br>
+				<br>
+			</c:forEach>
+		</div>
+		<div class="filtre">
+			Classe Energétique<br>
+			<c:forEach items="${classesEnergetiques}" var="ce">
+				<input type="checkbox" id="{ce}" name="${ce}">
+				<label for="{ce}">${ce}</label><br>
+				<br>
+			</c:forEach>
+		</div>
+		<div class="filtre">
+			Prix<br>
+			<input type="checkbox" id="prix1" name="orix1">
+			<label for="prix1">0 - 100 €</label><br>
+			<input type="checkbox" id="prix2" name="prix2">
+			<label for="prix2">100 - 500 €</label><br>
+			<input type="checkbox" id="prix3" name="prix3">
+			<label for="prix3">500 - 1000 €</label><br>
+			<input type="checkbox" id="prix4" name="prix4">
+			<label for="prix4"> + 1000 €</label><br>
+		</div>
+		<button type="submit">Rechercher</button>
 	</div>
 	<div class="content">
 
-		<!-- 				<tr> -->
-		<!-- 					<th>Nom</th> -->
-		<!-- 					<th>Catégorie</th> -->
-		<!-- 					<th>Marque</th> -->
-		<!-- 					<th>Prix</th> -->
-		<!-- 					<th>Photo</th> -->
-		<!-- 					<th>Classe énergétique</th> -->
-		<!-- 				</tr> -->
 		<!-- tableau qui va afficher les utilisateurs enregistrés
 		dans la base de données grâce à une boucle forEach -->
-		<c:forEach items="${catalogueProduits}" var="p">
+		<c:forEach items="${categorie}" var="p">
 			<article>
 				<Table border="1">
 					<tr>
 						<td><img src="img/${p.photo}" /></td>
-						<td>
+						<td style="width: 100%">
+							<h2>${p.produit_name}</h2>
 							<ul>
-								<li>${p.produit_name}</li>
 								<li>${p.categorie_id}</li>
 								<li>${p.marque}</li>
 								<li>${p.prix}</li>
+								<%-- 								<li>${p.classe_energetique_id}</li> --%>
 							</ul>
 						</td>
 
-						<%-- 						<td>${p.classe_energetique_id}</td> --%>
 					</tr>
 				</Table>
 			</article>
@@ -47,36 +64,6 @@
 
 		<article>
 			<h1>Produit 2</h1>
-			<p>Caractéristiques produit</p>
-			<p>photo produit</p>
-		</article>
-		<article>
-			<h1>Produit 3</h1>
-			<p>Caractéristiques produit</p>
-			<p>photo produit</p>
-		</article>
-		<article>
-			<h1>Produit 3</h1>
-			<p>Caractéristiques produit</p>
-			<p>photo produit</p>
-		</article>
-		<article>
-			<h1>Produit 3</h1>
-			<p>Caractéristiques produit</p>
-			<p>photo produit</p>
-		</article>
-		<article>
-			<h1>Produit 3</h1>
-			<p>Caractéristiques produit</p>
-			<p>photo produit</p>
-		</article>
-		<article>
-			<h1>Produit 3</h1>
-			<p>Caractéristiques produit</p>
-			<p>photo produit</p>
-		</article>
-		<article>
-			<h1>Produit 3</h1>
 			<p>Caractéristiques produit</p>
 			<p>photo produit</p>
 		</article>

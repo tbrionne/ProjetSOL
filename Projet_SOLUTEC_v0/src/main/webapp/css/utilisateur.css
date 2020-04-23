@@ -22,7 +22,7 @@ footer{
 	width: 100%;
 	height: 80px;
 }
-/* Create two columns/boxes that floats next to each other */
+
 
 .container {
    position: relative;
@@ -38,12 +38,16 @@ footer{
 }
 
 .content {
-    width: 65%;
+    width: 80%;
     margin-left: 20%;
 }
 article{
 	margin: 10px;
 	background-color: #0080ff;
+}
+article li{
+	line-height: 1.5em;
+	list-style-type: circle;
 }
 .filtre{
 	background-color: #80ff00;
