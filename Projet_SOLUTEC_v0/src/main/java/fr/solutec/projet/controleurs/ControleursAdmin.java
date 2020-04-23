@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ public class ControleursAdmin {
 
 	@Autowired 
 	  private ProduitRepository produitRepository;
+	  	
 	
 			
 	// Appel de la page d'accueil admin :
@@ -36,14 +38,123 @@ public class ControleursAdmin {
 	
 	// Accès à la page gestionAdmin :
 	@PostMapping
-	public String getGestionAdmin(HttpServletRequest request, @ModelAttribute("admin") Admin admin, Map<String, Object> model) {
+	public String getGestionAdmin(HttpServletRequest request, @ModelAttribute("produit") Produit produit, @ModelAttribute("admin") Admin admin, Map<String, Object> model) {
 		if (request.getParameter("login").equals("admin") &&
-				request.getParameter("password").equals("SOLUTEC")) {
+				request.getParameter("password").equals("SOLUTEC")) 
+		{
+			
+			
+			if(produit.getCategorie_id()!=null && produit.getMarque()!=null && produit.getPrix()!=null && produit.getPhoto()!=null && produit.getProduit_name()!=null)
+			{
+				produitRepository.save(produit);
+				return "gestionAdmin";
+			}
+			
 			model.put("gestionAdmin", produitRepository.findAll());
 			return "gestionAdmin";
-	} else
+			
+			
+		} 
+		
+	else
 			return "accueilAdmin";
 	} 
+	
+	
+	
+//	@PostMapping
+//	public String postAjouterProduit(@Valid @ModelAttribute("produit") Produit produit, BindingResult result )
+//	{
+//		
+//		if(produit.getCategorie_id()!=null && produit.getMarque()!=null && produit.getPrix()!=null && produit.getPhoto()!=null && produit.getProduit_name()!=null)
+//		{
+//			produitRepository.save(produit);
+//			System.out.println("ajout effectué");
+//			return "gestionAdmin";
+//			
+//			
+//		}	
+//		
+//		System.out.println("echec ajout");
+//		return "gestionAdmin";
+		
+//		 if(result.hasErrors()) {
+//			  return "gestionAdmin";
+//		  }
+		 
+//		  produitRepository.save(produit);
+//		  return "gestionAdmin";
+		
+//	}
+	
+	
+	// Suppression d'un produit :
+		@GetMapping(path="/supprimer")
+		public String supprimerProduit(HttpServletRequest request, Map<String, Object> model) {
+			if(request.getParameter("produit_id")!=null) {
+				produitRepository.deleteById(Integer.parseInt(request.getParameter("produit_id")));
+			}
+			model.put("produits", produitRepository.findAll());
+			return "gestionAdmin";
+		}
+	
+		
+		
+	@PostMapping(path="/ajouter")
+	public String ajoutProduitAdmin (@ModelAttribute("produit") Produit produit, HttpServletRequest request, BindingResult result, Map<String, Object> model)
+	{
+		  produit.setProduit_name(request.getParameter("produit_name"));
+		  produit.setCategorie_id(request.getParameter("categorie_id"));
+		  produit.setMarque(request.getParameter("marque"));
+		  produit.setPrix(request.getParameter("prix"));
+		  produit.setPhoto(request.getParameter("photo")); 
+		  produit.setClasse_Energetique_Id(request.getParameter("classe_energetique_id"));
+		  produitRepository.save(produit);
+		  System.out.println("ajout effectué");
+		  return "gestionAdmin";	
+		
+//		if(produit.getCategorie_id()!=null && produit.getMarque()!=null && produit.getPrix()!=null && produit.getPhoto()!=null && produit.getProduit_name()!=null)
+//		{
+//			produitRepository.save(produit);
+//			System.out.println("ajout effectué");
+//			
+//			
+//		}	
+//		
+//		else
+//		{
+//			System.out.println("echec ajout");
+//			return "gestionAdmin";
+//		}	
+	}
+	
+	
+	
+//	@GetMapping(path="/ajouter")
+//	public String getAjoutProduit(@Valid @ModelAttribute("produit") Produit produit, BindingResult result) {
+//		
+//		return "ajoutProduit";
+//	}
+//	
+	
+//	@PostMapping(path="/ajouter")
+//	public String postAjouterProduit(@Valid @ModelAttribute("produit") Produit produit, BindingResult result)
+//	{
+//		if(produit.getCategorie_id()!=null && produit.getMarque()!=null && produit.getPrix()!=null && produit.getPhoto()!=null && produit.getProduit_name()!=null)
+//		{
+//			produitRepository.save(produit);
+//			System.out.println("ajout ok");
+//			return "gestionAdmin";
+//		}
+//		
+//		else 
+//		{
+//			System.out.println("ajout echec");
+//			return "gestionAdmin";
+//		}
+//		
+//	}
+	
 	
 //	// Ajout d'un produit :
 //	@GetMapping(path="/gestionProduits")
