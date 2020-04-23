@@ -15,6 +15,8 @@
 
 	<h3>Page gestionAdmin</h3>
 		
+		
+		
 	
 <!-- 	Definition des categories : -->
 <!-- 	/!\ A enlever une fois qu'on aura résolu le problème de foreign key /!\  -->
@@ -31,8 +33,22 @@
     <option value="goldfish">Goldfish</option>
 </select>
 		 
-		 
+	<form action="admin/ajouter" method="POST">
+		<tr>
+
+			<td><input type="text"  name="categorie_id"/></td>
+			<td><input type="text"  name="produit_name"/></td>
+			<td><input type="text"  name="marque"/></td> 
+			<td><input type="text"  name="prix"/></td>
+			<td><input type="text"  name="photo"/></td> 
+			<td><input type="text"  name="classe_energetique_id"/></td> 
+			
+			<td><input type="submit" value="S'inscrire"/></td>		 
+		</tr>
 		
+	</form>	
+	
+	
 
 <%-- <form:form method="POST" commandName="electromenager" action="gestionAdmin"> --%>
 <!-- <table> -->
@@ -66,11 +82,11 @@
 <!-- 			<table> -->
 <!-- 				<tr> -->
 <!-- 					<td>Nom : </td> -->
-<%-- 					<td><form:input path="name" /></td> --%>
+<%-- 					<td><form:input path="produit_name" /></td> --%>
 <!-- 				</tr> -->
 <!-- 				<tr> -->
 <!-- 					<td>Catégorie : </td> -->
-<%-- 					<td><form:input path="idCategorie"/></td> --%>
+<%-- 					<td><form:input path="categorie_id"/></td> --%>
 <!-- 				</tr> -->
 <!-- 				<tr> -->
 <!-- 					<td>Marque : </td> -->
@@ -84,13 +100,18 @@
 <!-- 					<td>Nom du fichier de la photo : </td> -->
 <%-- 					<td><form:input path="photo" /></td> --%>
 <!-- 				</tr> -->
-<!-- 				<tr> -->
-<!-- 					<td>Classe energetique : </td> -->
-<%-- 					<td><form:input path="classeEnergetique" /></td> --%>
-<!-- 				</tr> -->
-<!-- 				<td><input type="submit" value="Ajout d'un produit" ></td> -->
+<!--  			<tr>  --> 
+<!-- 				<td>Classe energetique : </td>  --> 
+<%-- 					<td><form:input path="classe_energetique_id" /></td>  --%> 
+<!-- 				</tr> 
+
+				
+				
 <!-- 			</table> -->
 <%-- 		</form:form> --%>
+		
+<!-- 		<a href="admin/ajouter"> Ajouter un produit</a> -->
+		
 		
 <!-- 	Tableau récapitulatif des produits : -->
 		
@@ -115,6 +136,7 @@
 					<td><input type="text" value="${p.prix}" name="PRIX" /></td>
 <%-- 					<td><input type="text" value="${p.classe_energetique_id}" name="CLASSE ENERGETIQUE" /></td> --%>
 					<td><input type="text" value="${p.photo}" name="PHOTO" /></td>
+					<td><a href="admin/supprimer?produit_id=${p.produit_id}">Supprimer</a></td>
 				</tr>
 				</form>
 			</c:forEach>
