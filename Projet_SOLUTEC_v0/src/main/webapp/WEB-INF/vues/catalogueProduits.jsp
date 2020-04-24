@@ -27,7 +27,7 @@
 				<h3><spring:message code="f_classe"/></h3><br>
 				<c:forEach items="${classesEnergetiques}" var="ce">
 					<input type="checkbox" id="${ce}" name="ce" value="${ce}">
-					<label for="${ce}">${nomClasseEnergetique[ce]}</label>
+					<label for="${ce}">${nomClasseEnergetique[ce-1]}</label>
 					<br>
 					<br>
 				</c:forEach>
@@ -81,6 +81,10 @@
 				</Table>
 			</article>
 		</c:forEach>
+		
+		<c:if test="${empty categorie}">
+			<p><spring:message code="msg_vide"/></p>
+		</c:if>
 
 	</div>
 </div>
