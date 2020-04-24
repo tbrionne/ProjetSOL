@@ -3,6 +3,7 @@ package fr.solutec.projet.controleurs;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.formation.inscriptionapp.dao.Utilisateur;
 import fr.solutec.projet.modeles.Admin;
 import fr.solutec.projet.modeles.Produit;
 import fr.solutec.projet.modeles.ProduitRepository;
@@ -32,19 +34,16 @@ public class ControleursAdmin {
 	// Connexion à la page gestionAdmin (login : admin et mdp : SOLUTEC) :
 		@PostMapping(path="/admin")
 		public String getGestionAdmin(HttpServletRequest request, @ModelAttribute("produit") Produit produit, 
-				@ModelAttribute("admin") Admin admin, Map<String, Object> model) {
+				@ModelAttribute("admin") Admin admin, Map<String, Object> model, HttpSession session) {
 			if (request.getParameter("login").equals("admin") &&
 					request.getParameter("password").equals("SOLUTEC")) {
-//				Admin administrateur = new Admin(Integer.parseInt(request.getParameter("idAdmin")), 
-//						request.getParameter("login").trim(), 
-//						request.getParameter("password").trim());
-//				HttpSession session = request.getSession();
-//			    session.setAttribute("admin", administrateur);
-//			    out.println("Vous êtes connecté avec le nom de compte admin");
+				session.setAttribute("connecte", true);
 				model.put("produits", produitRepository.findAll());
 				return "gestionAdmin";
-			} else
+			} else {
+				session.setAttribute("connecte", false);
 				return "accueilAdmin";
+			}
 		} 
 		
 		
@@ -89,43 +88,21 @@ public class ControleursAdmin {
 
 	@PostMapping(path="/adminModifier")
 	public String setProduitAdmin (@ModelAttribute("produit") Produit produit, HttpServletRequest request,
-			BindingResult result, Map<String, Object> model) {
+			Map<String, Object> model) {
 		
 		produit.setProduit_id(Integer.parseInt(request.getParameter("id")));
 		produit.setProduit_name(request.getParameter("produit_name"));
-		//produit.setCategorie_id(Integer.parseInt(request.getParameter("categorie_id")));
-		System.out.println("entre dans le post modifier");
-		
+		produit.setCategorie_id(Integer.parseInt(request.getParameter("categorie_id")));	
 		produit.setMarque(request.getParameter("marque"));
 		produit.setPrix(Integer.parseInt(request.getParameter("prix")));
-		produit.setPhoto(request.getParameter("photo")); 
-		
-//		produit.setClasse_Energetique_Id(request.getParameter("classe_energetique_id"));
+		produit.setPhoto(request.getParameter("photo"));
+		produit.setClasse_energetique_id(Integer.parseInt(request.getParameter("classe_energetique_id")));
 		produitRepository.save(produit);
 		model.put("produits", produitRepository.findAll());
+		model.put("msg", "ok");
 		return "gestionAdmin";
 	}
 	
-	
-	
-	
-	
-	
-
-//	@PostMapping(path="/adminModifier")
-//	public String setProduitAdmin (@ModelAttribute("produit") Produit produit, HttpServletRequest request,
-//			BindingResult result, Map<String, Object> model) {
-//		produit.setProduit_name(request.getParameter("produit_name"));
-//		produit.setCategorie_id(Integer.parseInt(request.getParameter("categorie_id")));
-//		produit.setMarque(request.getParameter("marque"));
-//		produit.setPrix(request.getParameter("prix"));
-//		produit.setPhoto(request.getParameter("photo")); 
-////			produit.setClasse_Energetique_Id(request.getParameter("classe_energetique_id"));
-//		produitRepository.save(produit);
-//		model.put("produits", produitRepository.findAll());
-//		return "gestionAdmin";
-//	}
-
 
 	// Suppression d'un produit :
 	@GetMapping(path = "/adminSupprimer")

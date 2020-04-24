@@ -3,6 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
+
 <!DOCTYPE html>
 
 <html>
@@ -12,7 +14,7 @@
 	
 	
 <!-- 	Body : -->
-	
+${session["connecte"]}
 	<h3>Ajout d'un produit à la base de données : </h3>
 		<form action="adminAjouter" method="POST">
 			<table>
@@ -56,6 +58,10 @@
 		
 		<h3>Produits dans la base :</h3>
 		
+		<c:if test="${!empty msg}">
+			<h4>Modification effectuée avec succès</h4>
+		</c:if>
+		
 		<table border="1">
 			<tr>
 				<th>ID
@@ -82,23 +88,21 @@
 				<th>CLASSE ENERGETIQUE</th>
 				<th>PHOTO</th>
 			</tr>
+			
 			<c:forEach items="${produits}" var="p">
- 				
-				<tr>
 				<form action="adminModifier" method="POST">
-					<td>${p.produit_id} <input type="hidden" name="ID" value="${p.produit_id}"/></td>
-					<td><input type="text" value="${p.produit_name}" name="NOM" /></td>
-					<td><input type="text" value="${p.categorie_id}" name="CATEGORIE" /></td>
-					<td><input type="text" value="${p.marque}" name="MARQUE" /></td>
-					<td><input type="text" value="${p.prix}" name="PRIX" /></td>
-					<td><input type="text" value="${p.classe_energetique_id}" name="CLASSE ENERGETIQUE" /></td>
-					<td><input type="text" value="${p.photo}" name="PHOTO" /></td>
-					<td><input type="submit" value="Modifier" /></td>
-					<td><a href="adminSupprimer?produit_id=${p.produit_id}">Supprimer</a></td>
-				</form>
-				
-				</tr>
-			 
+					<tr>
+						<td>${p.produit_id} <input type="hidden" name="id" value="${p.produit_id}"/></td>
+						<td><input type="text" value="${p.produit_name}" name="produit_name" /></td>
+						<td><input type="text" value="${p.categorie_id}" name="categorie_id" /></td>
+						<td><input type="text" value="${p.marque}" name="marque" /></td>
+						<td><input type="text" value="${p.prix}" name="prix" /></td>
+						<td><input type="text" value="${p.classe_energetique_id}" name="classe_energetique_id" /></td>
+						<td><input type="text" value="${p.photo}" name="photo" /></td>
+						<td><input type="submit" value="Modifier" /></td>
+						<td><a href="adminSupprimer?produit_id=${p.produit_id}">Supprimer</a></td>
+					</tr>
+				</form>				 
 			</c:forEach>
 		</table>
 	
