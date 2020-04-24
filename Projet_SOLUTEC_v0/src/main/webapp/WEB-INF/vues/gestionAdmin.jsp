@@ -57,19 +57,22 @@
 				<th>PHOTO</th>
 			</tr>
 			<c:forEach items="${produits}" var="p">
-<%-- 				<form action="adminModifier" method="POST"> --%>
+ 				
 				<tr>
-					<td>${p.produit_id}</td>
+				<form action="adminModifier" method="POST">
+					<td>${p.produit_id} <input type="hidden" name="ID" value="${p.produit_id}"/></td>
 					<td><input type="text" value="${p.produit_name}" name="NOM" /></td>
 					<td><input type="text" value="${p.categorie_id}" name="CATEGORIE" /></td>
 					<td><input type="text" value="${p.marque}" name="MARQUE" /></td>
 					<td><input type="text" value="${p.prix}" name="PRIX" /></td>
 <%-- 					<td><input type="text" value="${p.classe_energetique_id}" name="CLASSE ENERGETIQUE" /></td> --%>
 					<td><input type="text" value="${p.photo}" name="PHOTO" /></td>
-<!-- 					<td><input type="submit" value="Modifier" /></td> -->
+					<td><input type="submit" value="Modifier" /></td>
 					<td><a href="adminSupprimer?produit_id=${p.produit_id}">Supprimer</a></td>
+				</form>
+				
 				</tr>
-<%-- 				</form> --%>
+			 
 			</c:forEach>
 		</table>
 	
