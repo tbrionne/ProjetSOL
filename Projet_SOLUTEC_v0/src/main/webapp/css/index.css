@@ -1,31 +1,34 @@
 body {
-	margin:0;
+	margin: 0;
 }
 
 header {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #333;
-	
+	display: inline-block;
+	background-color: #ffffff;
 	top: 0;
 	width: 100%;
-	height: 80px;
+	height: 90px;
 }
 
 .logo {
-	position: absolute;
 	top: 0px;
 	left: 0px;
 	height: 80px;
 }
 
-h1.titre {
+.titre {
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 40px;
-	color: white;	
+	font-size: 60px;
+	font-weight: bold;
+	color: #004080;
+}
+
+.encadrement_drapeau {
+	top: 15px;
+	right: 15px;
+	background-color: white;
+/* 	border: 3px #004080 solid; */
 }
 
 .drapeau {
@@ -35,33 +38,29 @@ h1.titre {
 }
 
 nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  /*position:fixed*/
-  top: 80px;
-  width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	top: 80px;
+	width: 100%;
 }
 
-nav li { 
-  float: left;
+nav li {
+	width: 20%;
+	float: left;
 }
 
-nav li a { 
-  display: block;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+nav li a {
+	display: block;
+	font-family: Arial, Helvetica, sans-serif;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
-nav li a:hover:not(.active) {
-  background-color: #111;
-}
-
-.active:hover {
-  background-color: #4CAF50;
+nav li:hover{
+	background-color: #808080;
 }
