@@ -49,24 +49,70 @@ public class ControleurUtilisateurs {
 
 	@PostMapping(path = "/filtre")
 	public String setRecherche(HttpServletRequest request, Map<String, Object> model) {
-		for (String s : produitRepository.selectMarque()) {
-			if (request.getParameter(s) != null) {
-				model.put("categorie", (produitRepository.selectParMarque(s)));
-			}
-		}
-		if (request.getParameter("prix1") != null) {
-			model.put("categorie", categorieRepository.selectPrix1());
-		}
-		if (request.getParameter("prix2") != null) {
-			model.put("categorie", categorieRepository.selectPrix2());
-		}
-		if (request.getParameter("prix3") != null) {
-			model.put("categorie", categorieRepository.selectPrix3());
-		}
+		
 		model.put("marques", produitRepository.selectMarque());
 		model.put("classesEnergetiques", produitRepository.selectClasseEnergetique());
 		model.put("nomCat", categorieRepository.selectCategorieName());
 		model.put("nomClasseEnergetique", classeEnergetiqueRepository.selectClasseEnergetiqueName());
+		
+		// Test paramètre marque non vide
+		if (request.getParameter("marque") != null) {
+			// Paramètre marque détecté
+			// Test paramètre classe energetique non vide
+			if (request.getParameter("ce") != null) {
+				// Paramètre classe energetique détecté en plus du paramètre marque
+				// Test paramètre prix non vide
+				if (request.getParameter("prix") != null) {
+					// Les trois paramètres sont détectés
+					// Filtres sur trois paramètres
+					model.put("categorie", produitRepository.selectParFiltres(request.getParameter("marque"), Integer.parseInt(request.getParameter("ce")), Integer.parseInt(request.getParameter("prix"))));
+				}
+				// Pas de paramètre prix
+				// Seulement marque et classe
+				else {
+					// Filtre sur marque et classe
+					model.put("categorie", produitRepository.selectParMarqueEtClasse(request.getParameter("marque"), Integer.parseInt(request.getParameter("ce"))));
+				}
+			}
+			// Pas de paramètre classe energetique
+			else {
+				// Test paramètre prix non vide
+				if (request.getParameter("prix") != null) {
+					// Filtre sur marque et prix
+					model.put("categorie", produitRepository.selectParMarqueEtPrix(request.getParameter("marque"), Integer.parseInt(request.getParameter("prix"))));
+				}
+				// Pas de paramètre prix
+				else {
+					// Filtre sur marque
+					model.put("categorie", produitRepository.selectParMarque(request.getParameter("marque")));
+				}
+			}
+			return "catalogueProduits";
+		}
+		
+		// Pas de paramètre marque
+		// Test paramètre classe energetique non vide
+		if (request.getParameter("ce") != null) {
+			// Test paramètre prix non vide
+			if (request.getParameter("prix") != null) {
+				// Filtre sur classe et prix
+				model.put("categorie", produitRepository.selectParClasseEtPrix(Integer.parseInt(request.getParameter("ce")), Integer.parseInt(request.getParameter("prix"))));
+			}
+			// Pas de paramètre prix
+			else {
+				// Filtre sur classe
+				model.put("categorie", produitRepository.selectParClasses(Integer.parseInt(request.getParameter("ce"))));
+			}
+			return "catalogueProduits";
+		}
+		
+		// Pas de paramètre classe energetique
+		// Test paramètre prix
+		if (request.getParameter("prix") != null) {
+			// Filtre sur prix
+			model.put("categorie", produitRepository.selectPrix(Integer.parseInt(request.getParameter("prix"))));
+			return "catalogueProduits";
+		}
 
 		return "catalogueProduits";
 

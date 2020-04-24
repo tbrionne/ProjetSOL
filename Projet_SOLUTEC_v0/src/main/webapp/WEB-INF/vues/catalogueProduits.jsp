@@ -15,7 +15,7 @@
 			<div class="filtre">
 				<h3>Marques: </h3><br>
 				<c:forEach items="${marques}" var="m">
-					<input type="checkbox" id="${m}" name="${m}">
+					<input type="checkbox" id="${m}" name="marque" value="${m}">
 					<label for="${m}">${m}</label>
 					<br>
 					<br>
@@ -26,7 +26,7 @@
 			<div class="filtre">
 				<h3>Classe Energétique: </h3><br>
 				<c:forEach items="${classesEnergetiques}" var="ce">
-					<input type="checkbox" id="${ce}" name="${ce}">
+					<input type="checkbox" id="${ce}" name="ce" value="${ce}">
 					<label for="${ce}">${ce}</label>
 					<br>
 					<br>
@@ -36,16 +36,16 @@
 			<%-- Filtre sur les prix --%>
 			<div class="filtre">
 				<h3>Prix: </h3><br> 
-				<input type="radio" id="prix1" name="prix1">
+				<input type="radio" id="prix1" name="prix" value="100">
 				<label for="prix1">Jusqu'à 100€</label><br> 
 				
-				<input type="radio" id="prix2" name="prix2"> 
+				<input type="radio" id="prix2" name="prix" value="200"> 
 				<label for="prix2">Jusqu'à 200€</label><br>
 				 
-				<input type="radio" id="prix3" name="prix3">
+				<input type="radio" id="prix3" name="prix" value="400">
 				<label for="prix3">Jusqu'à 400€</label><br>
 				 
-				<input type="radio" id="prix4" name="prix4"> 
+				<input type="radio" id="prix4" name="prix" value="600"> 
 				<label for="prix4">Jusqu'à 600€</label><br>
 			</div>
 			
