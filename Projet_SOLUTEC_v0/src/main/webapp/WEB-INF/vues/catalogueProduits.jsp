@@ -49,7 +49,7 @@
 				<label for="prix4"><spring:message code="f_p4"/></label><br>
 				
 				<input type="radio" id="prix5" name="prixMax" value="600"> 
-				<label for="prix4">Au delà de 600€</label><br>
+				<label for="prix4"><spring:message code="f_p5"/></label><br>
 			</div>
 			
 			<button type="submit" class="bouton_filtre"><spring:message code="f_recherche"/></button>
