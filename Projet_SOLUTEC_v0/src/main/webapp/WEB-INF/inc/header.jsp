@@ -29,10 +29,10 @@
 	<!-- 		Menu de navigation : -->
 	<nav>
 		<ul>
-			<li><a href="catalog">Tous les articles</a></li>
-			<li><a href="catalog?critere=1">Réfrigérateur</a></li>
-			<li><a href="catalog?critere=2">Lave-vaisselle</a></li>
-			<li><a href="catalog?critere=3">Four</a></li>
-			<li><a href="catalog?critere=4">Plaques de cuisson</a></li>
+			<li><a href="catalog"><spring:message code="m_tous"/></a></li>
+			<li><a href="catalog?critere=1"><spring:message code="m_frigo"/></a></li>
+			<li><a href="catalog?critere=2"><spring:message code="m_LaveVaisselle"/></a></li>
+			<li><a href="catalog?critere=3"><spring:message code="m_Four"/></a></li>
+			<li><a href="catalog?critere=4"><spring:message code="m_PlaqueCuisson"/></a></li>
 		</ul>
 	</nav>
