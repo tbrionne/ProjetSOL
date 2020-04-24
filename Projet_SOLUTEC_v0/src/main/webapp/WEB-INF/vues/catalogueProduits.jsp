@@ -27,7 +27,7 @@
 				<h3><spring:message code="f_classe"/></h3><br>
 				<c:forEach items="${classesEnergetiques}" var="ce">
 					<input type="checkbox" id="${ce}" name="ce" value="${ce}">
-					<label for="${ce}">${nomClasseEnergetique[ce]}</label>
+					<label for="${ce}">${nomClasseEnergetique[ce-1]}</label>
 					<br>
 					<br>
 				</c:forEach>
@@ -47,6 +47,9 @@
 				 
 				<input type="radio" id="prix4" name="prix" value="600"> 
 				<label for="prix4"><spring:message code="f_p4"/></label><br>
+				
+				<input type="radio" id="prix5" name="prixMax" value="600"> 
+				<label for="prix4">Au delà de 600€</label><br>
 			</div>
 			
 			<button type="submit"><spring:message code="f_recherche"/></button>
@@ -78,6 +81,10 @@
 				</Table>
 			</article>
 		</c:forEach>
+		
+		<c:if test="${empty categorie}">
+			<p><spring:message code="msg_vide"/></p>
+		</c:if>
 
 	</div>
 </div>

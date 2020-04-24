@@ -65,13 +65,23 @@ public class ControleurUtilisateurs {
 				if (request.getParameter("prix") != null) {
 					// Les trois paramètres sont détectés
 					// Filtres sur trois paramètres
-					model.put("categorie", produitRepository.selectParFiltres(request.getParameter("marque"), Integer.parseInt(request.getParameter("ce"))+1, Integer.parseInt(request.getParameter("prix"))));
+					{
+					model.put("categorie", produitRepository.selectParFiltres(request.getParameter("marque"), Integer.parseInt(request.getParameter("ce")), Integer.parseInt(request.getParameter("prix"))));
+					}
+					
+				if (request.getParameter("prixMax") != null)
+					{
+					//Le prix selectionne est la borne superieure
+					model.put("categorie", produitRepository.selectParFiltresMax(request.getParameter("marque"), Integer.parseInt(request.getParameter("ce")), Integer.parseInt(request.getParameter("prixMax"))));
+					}
+					 
+					
 				}
 				// Pas de paramètre prix
 				// Seulement marque et classe
 				else {
 					// Filtre sur marque et classe
-					model.put("categorie", produitRepository.selectParMarqueEtClasse(request.getParameter("marque"), Integer.parseInt(request.getParameter("ce"))+1));
+					model.put("categorie", produitRepository.selectParMarqueEtClasse(request.getParameter("marque"), Integer.parseInt(request.getParameter("ce"))));
 				}
 			}
 			// Pas de paramètre classe energetique
@@ -96,12 +106,12 @@ public class ControleurUtilisateurs {
 			// Test paramètre prix non vide
 			if (request.getParameter("prix") != null) {
 				// Filtre sur classe et prix
-				model.put("categorie", produitRepository.selectParClasseEtPrix(Integer.parseInt(request.getParameter("ce"))+1, Integer.parseInt(request.getParameter("prix"))));
+				model.put("categorie", produitRepository.selectParClasseEtPrix(Integer.parseInt(request.getParameter("ce")), Integer.parseInt(request.getParameter("prix"))));
 			}
 			// Pas de paramètre prix
 			else {
 				// Filtre sur classe
-				model.put("categorie", produitRepository.selectParClasses(Integer.parseInt(request.getParameter("ce"))+1));
+				model.put("categorie", produitRepository.selectParClasses(Integer.parseInt(request.getParameter("ce"))));
 			}
 			return "catalogueProduits";
 		}
@@ -113,6 +123,12 @@ public class ControleurUtilisateurs {
 			model.put("categorie", produitRepository.selectPrix(Integer.parseInt(request.getParameter("prix"))));
 			return "catalogueProduits";
 		}
+		if (request.getParameter("prixMax") != null) {
+			// Filtre sur prix borne superieure
+			model.put("categorie", produitRepository.selectPrixMax(Integer.parseInt(request.getParameter("prixMax"))));
+			return "catalogueProduits";
+		}
+		
 
 		return "catalogueProduits";
 
