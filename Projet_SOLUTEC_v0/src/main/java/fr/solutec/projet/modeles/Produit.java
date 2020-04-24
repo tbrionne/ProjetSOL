@@ -27,6 +27,7 @@ public class Produit {
 	@Column(name="CLASSE_ENERGETIQUE_ID")
 	private Integer classe_energetique_id;
 	
+	
 	//Getters and setters
 	public Integer getProduit_id() {
 		return produit_id;
