@@ -23,7 +23,7 @@ public class Produit {
 	@Column(name = "PRIX", nullable=false)
 	private Integer prix;
 	@Column(name = "PHOTO", nullable=false)
-	private String photo;
+	private String photo="user.png";
 	@Column(name="CLASSE_ENERGETIQUE_ID")
 	private Integer classe_energetique_id;
 	

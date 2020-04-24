@@ -1,0 +1,181 @@
+/*CSS Admin*/
+
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+/* Form */
+
+.textImput {
+  width: 100%;
+  padding: 5px 20px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 2px solid #333;
+  border-radius: 4px;
+}
+
+.selectImput {
+  width: 100%;
+  padding: 5px 20px;
+  border: 2px solid #333;
+  border-radius: 4px;
+}
+
+/* Tableau */
+.tableau {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tableau td, .tableau th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+.tableau tr:nth-child(even){background-color: #f2f2f2;}
+
+.tableau tr:hover {background-color: #ddd;}
+
+.tableau th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #333;
+  color: white;
+}
+
+/* PAGE CATALOGUE UTILISATEUR */
+
+.text_accueil {
+	text-align: center;
+	background-color: white;
+}
+
+.img_accueil {
+	display: inline-block;
+	width: 250px;
+	margin: 5px;
+	padding: 20px;
+}
+
+.container {
+	position: relative;
+	top: 0;
+	min-height: 800px;
+	/*pour que le conteneur ait une taille min de 800px et positionner le footer dessous*/
+}
+
+.aside {
+	width: 15%;
+	position: absolute;
+	background-color: gray;
+	height: 100%;
+	text-align: center;
+}
+
+.content {
+	width: 80%;
+	margin-left: 20%;
+}
+
+article {
+	margin: 10px;
+	background-color: #804040;
+	border-radius: 10px 5px 10px 5px;
+}
+
+article li {
+	line-height: 1.5em;
+	list-style-type: circle;
+}
+
+.filtre {
+	position: relative;
+	background-color: #80ff00;
+	margin: 20px;
+}
+
+
+/* PAGE ACCUEIL UTILISATEUR */
+
+.container_accueil {
+	width: 100%;
+	margin:40px 0;
+}
+
+.container_image_accueil {
+	position: relative;
+	width: 100%;
+	display: grid;
+}
+
+.image_accueil {
+	display: block;
+	width: 100%;
+	height: auto;
+	
+}
+
+.overlay {
+	opacity: 0.6;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #008CBA;
+	overflow: hidden;
+	width: 100%;
+	height: 0;
+	transition: .5s ease;
+}
+
+.container_image_accueil:hover .overlay {
+	height: 100%;
+}
+
+.text_overlay {
+	white-space: nowrap;
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	overflow: hidden;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+.text_basdepage {
+	border: 2px solid black;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #004080;
+	text-align: center;
+	background-color: white;
+	color: black;
+	font-size: 25pt;
+	font-family: "Arial", cursive, sans-serif;
+	text-align:center;
+	padding:30px 30px 30px;
+	margin: 50px 30px 50px;
+}
+
+/* FOOTER */
+
+footer {
+	display: inline-block;
+	background-color: #c0c0c0;
+	bottom: 0;
+	width: 100%;
+	height: 80px;
+}
+.image_footer{
+	height: 30px;
+	width: 30px;
+	margin: 10px;
+}

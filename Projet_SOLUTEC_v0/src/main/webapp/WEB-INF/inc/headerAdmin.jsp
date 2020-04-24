@@ -3,6 +3,7 @@
 <title>Admin Projet Solutec</title>
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/utilisateur.css">
+<link rel="stylesheet" href="css/admin.css">
 </head>
 
 <body>

@@ -1,5 +1,9 @@
 package fr.solutec.projet.controleurs;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +16,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import edu.formation.inscriptionapp.dao.Utilisateur;
+
 import fr.solutec.projet.modeles.Admin;
 import fr.solutec.projet.modeles.Produit;
 import fr.solutec.projet.modeles.ProduitRepository;
@@ -65,12 +71,34 @@ public class ControleursAdmin {
 		// Ajout d'un produit dans la base de données :
 		@PostMapping(path="/adminAjouter")
 		public String addProduitAdmin (@ModelAttribute("produit") Produit produit,
-				BindingResult result, Map<String, Object> model) {
+				@RequestParam("fichierUpload") MultipartFile fichier, HttpServletRequest request,
+				BindingResult result, Map<String, Object> model) throws IOException {
+			
+			System.out.println((!fichier.isEmpty()));
+			
 			if(produit.getCategorie_id()!=null &&
 					produit.getMarque()!=null &&
 					produit.getPrix()!=null &&
 					produit.getPhoto()!=null &&
-					produit.getProduit_name()!=null) {
+					produit.getProduit_name()!=null &&
+					(!fichier.isEmpty())) {
+				
+				String cheminApplication = request.getSession().getServletContext().getRealPath("/");
+				String nomFichier = fichier.getOriginalFilename();
+				System.out.println(nomFichier); 
+				//String nomFichierSansChemin = nomFichier.substring(nomFichier.lastIndexOf(File.separator), 0);
+				String nomFichierSansChemin = nomFichier;
+				String nomDestination = cheminApplication + "img" + File.separator + nomFichierSansChemin;
+				
+				File fichierServeur = new File(nomDestination);
+				
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fichierServeur));
+				
+				stream.write(fichier.getBytes());
+				stream.close();
+				
+				produit.setPhoto(nomFichierSansChemin);
+				
 				produitRepository.save(produit);
 				model.put("produits", produitRepository.findAll());
 				return "gestionAdmin";
@@ -79,6 +107,7 @@ public class ControleursAdmin {
 				return "gestionAdmin";
 			}	
 		}
+
 
 
 	
