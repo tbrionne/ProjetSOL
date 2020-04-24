@@ -48,39 +48,19 @@ public class ControleursAdmin {
 		} 
 		
 		
-//	// Vérifier les paramètres de connexion :
-//    // Si les identifiants sont bons :
-//    if(request.getParameter("username").trim().contains("user") && 
-//            request.getParameter("password").trim().contains("user")) {
-//                User user = new User(
-//                request.getParameter("username").trim(),
-//                request.getParameter("password").trim()
-//            );
-//            HttpSession session = request.getSession();
-//            session.setAttribute("user", user);
-//            out.println("<div class = 'succes'>Vous êtes connecté avec le nom de compte "
-//                    + request.getParameter("username") + ".</div>");
-//    }
-//    // Si les identifiants sont mauvais :
-//    else {
-//            out.println("<div class = 'echec'>Paramètres de connexions incorrects !<br><br></div>");
-//            request.getRequestDispatcher("/WEB-INF/Include/login_form.html").include(request, response);
-//    }
-
-
 	// Tri des données :
-//		@GetMapping(path="/adminTri")
-//		public String sortProduit(HttpServletRequest request, Map<String, Object> model) {
-//			if(request.getParameter("critere").equals("produit_idAsc"))
-//				model.put("produits", produitRepository.selectProduitParIdAsc());
-//			if(request.getParameter("critere").equals("produit_idDesc"))
-//				model.put("produits", produitRepository.selectProduitParIdDesc());
-//			if(request.getParameter("critere").equals("produit_nameAsc"))
-//				model.put("produits", produitRepository.selectProduitParNomAsc());
-//			if(request.getParameter("critere").equals("produit_nameDesc"))
-//				model.put("produits", produitRepository.selectProduitParNomDesc());
-//			return "gestionAdmin";
-//		}
+		@GetMapping(path="/adminTri")
+		public String sortProduit(HttpServletRequest request, Map<String, Object> model) {
+			if(request.getParameter("critere").equals("produit_idAsc"))
+				model.put("produits", produitRepository.selectProduitParIdAsc());
+			if(request.getParameter("critere").equals("produit_idDesc"))
+				model.put("produits", produitRepository.selectProduitParIdDesc());
+			if(request.getParameter("critere").equals("produit_nameAsc"))
+				model.put("produits", produitRepository.selectProduitParNomAsc());
+			if(request.getParameter("critere").equals("produit_nameDesc"))
+				model.put("produits", produitRepository.selectProduitParNomDesc());
+			return "gestionAdmin";
+		}
 
 
 		// Ajout d'un produit dans la base de données :

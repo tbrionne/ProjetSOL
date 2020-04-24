@@ -19,11 +19,18 @@ public interface ProduitRepository extends CrudRepository<Produit, Integer> {
 	// Tri
 	
 	// Tri produits par ID descendant
+	@Query("SELECT p FROM Produit p ORDER BY p.produit_id asc")
+	Collection<Produit> selectProduitParIdAsc();
+	
 	@Query("SELECT p FROM Produit p ORDER BY p.produit_id desc")
-	Collection<Produit> selectProduitParId();
-	// Tri produits par nom ascendant
-	@Query("SELECT p FROM Produit p ORDER BY p.produit_name")
-	Collection<Produit> selectProduitParNom();
+	Collection<Produit> selectProduitParIdDesc();
+	
+	@Query("SELECT p FROM Produit p ORDER BY p.produit_name asc")
+	Collection<Produit> selectProduitParNomAsc();
+
+	@Query("SELECT p FROM Produit p ORDER BY p.produit_name desc")
+	Collection<Produit> selectProduitParNomDesc();
+
 
 	// Filtres simples
 	

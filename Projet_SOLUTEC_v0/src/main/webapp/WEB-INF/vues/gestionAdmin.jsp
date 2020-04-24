@@ -48,6 +48,8 @@
 			</table>	
 		</form>	
 
+				
+
 	
 	
 	<!-- 	Tableau récapitulatif des produits : -->
@@ -56,8 +58,24 @@
 		
 		<table border="1">
 			<tr>
-				<th><a href="admin?critere=produit_id">ID</a></th>
-				<th><a href=admin?critere=produit_name">NOM</a></th>
+				<th>ID
+					<a href="adminTri?critere=produit_idDesc" style="position: relative; right: 0px;">
+						<img style="width: 15px;" src="img/Fleche_haut.png" alt="Tri decroissant" />
+					</a>
+					<br>
+					<a href="adminTri?critere=produit_idAsc" style="position: relative; right: 0px;">
+						<img style="width: 15px;" src="img/Fleche_bas.png" alt="Tri croissant" />
+					</a>
+				</th>
+				<th>NOM
+					<a href="adminTri?critere=produit_nameDesc" style="position: relative; right: 0px;">
+						<img style="width: 15px;" src="img/Fleche_haut.png" alt="Tri decroissant" />
+					</a>
+					<br>
+					<a href="adminTri?critere=produit_nameAsc" style="position: relative; right: 0px;">
+						<img style="width: 15px;" src="img/Fleche_bas.png" alt="Tri croissant" />
+					</a>
+				</th>
 				<th>CATEGORIE</th>
 				<th>MARQUE</th>
 				<th>PRIX</th>
