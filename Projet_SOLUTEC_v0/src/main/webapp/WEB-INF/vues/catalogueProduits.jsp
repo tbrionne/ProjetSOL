@@ -27,7 +27,7 @@
 				<h3>Classe Energétique: </h3><br>
 				<c:forEach items="${classesEnergetiques}" var="ce">
 					<input type="checkbox" id="${ce}" name="ce" value="${ce}">
-					<label for="${ce}">${ce}</label>
+					<label for="${ce}">${nomClasseEnergetique[ce]}</label>
 					<br>
 					<br>
 				</c:forEach>
