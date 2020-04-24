@@ -60,11 +60,11 @@ public class ControleursAdmin {
 				produit.getPrix()!=null &&
 				produit.getPhoto()!=null &&
 				produit.getProduit_name()!=null) {
-			produit.setProduit_name(request.getParameter("produit_name"));
-			produit.setCategorie_id(Integer.parseInt(request.getParameter("categorie_id")));
-			produit.setMarque(request.getParameter("marque"));
-			produit.setPrix(request.getParameter("prix"));
-			produit.setPhoto(request.getParameter("photo")); 
+//			produit.setProduit_name(request.getParameter("produit_name"));
+//			produit.setCategorie_id(Integer.parseInt(request.getParameter("categorie_id")));
+//			produit.setMarque(request.getParameter("marque"));
+//			produit.setPrix(request.getParameter("prix"));
+//			produit.setPhoto(request.getParameter("photo")); 
 //			produit.setClasse_Energetique_Id(request.getParameter("classe_energetique_id"));
 			produitRepository.save(produit);
 			model.put("produits", produitRepository.findAll());
@@ -75,20 +75,32 @@ public class ControleursAdmin {
 		}	
 	}
 
+	
+	
 	// Modification d'un produit dans la base de données :
-//	@PostMapping(path="/adminModifier")
-//	public String setProduitAdmin (@ModelAttribute("produit") Produit produit, HttpServletRequest request,
-//			BindingResult result, Map<String, Object> model) {
-//		produit.setProduit_name(request.getParameter("produit_name"));
-//		produit.setCategorie_id(Integer.parseInt(request.getParameter("categorie_id")));
-//		produit.setMarque(request.getParameter("marque"));
-//		produit.setPrix(request.getParameter("prix"));
-//		produit.setPhoto(request.getParameter("photo")); 
-////			produit.setClasse_Energetique_Id(request.getParameter("classe_energetique_id"));
-//		produitRepository.save(produit);
-//		model.put("produits", produitRepository.findAll());
-//		return "gestionAdmin";
-//	}
+	@PostMapping(path="/adminModifier")
+	public String setProduitAdmin (@ModelAttribute("produit") Produit produit, HttpServletRequest request,
+			BindingResult result, Map<String, Object> model) {
+		
+		produit.setProduit_id(Integer.parseInt(request.getParameter("id")));
+		produit.setProduit_name(request.getParameter("produit_name"));
+		//produit.setCategorie_id(Integer.parseInt(request.getParameter("categorie_id")));
+		System.out.println("entre dans le post modifier");
+		
+		produit.setMarque(request.getParameter("marque"));
+		produit.setPrix(request.getParameter("prix"));
+		produit.setPhoto(request.getParameter("photo")); 
+		
+//		produit.setClasse_Energetique_Id(request.getParameter("classe_energetique_id"));
+		produitRepository.save(produit);
+		model.put("produits", produitRepository.findAll());
+		return "gestionAdmin";
+	}
+	
+	
+	
+	
+	
 	
 	// Suppression d'un produit :
 		@GetMapping(path="/adminSupprimer")
