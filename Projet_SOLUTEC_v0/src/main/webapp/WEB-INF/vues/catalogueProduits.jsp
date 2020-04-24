@@ -13,7 +13,7 @@
 		<form action="filtre" method="post">
 			<h1><spring:message code="f_titre"/></h1>
 			<div class="filtre">
-				<h3><spring:message code="f_marque"/></h3><br>
+				<h3 class="titre_filtre"><spring:message code="f_marque"/></h3><br>
 				<c:forEach items="${marques}" var="m">
 					<input type="checkbox" id="${m}" name="marque" value="${m}">
 					<label for="${m}">${m}</label>
@@ -24,7 +24,7 @@
 			
 			<%-- Filtre sur les classes energetique --%>
 			<div class="filtre">
-				<h3><spring:message code="f_classe"/></h3><br>
+				<h3 class="titre_filtre"><spring:message code="f_classe"/></h3><br>
 				<c:forEach items="${classesEnergetiques}" var="ce">
 					<input type="checkbox" id="${ce}" name="ce" value="${ce}">
 					<label for="${ce}">${nomClasseEnergetique[ce-1]}</label>
@@ -35,7 +35,7 @@
 			
 			<%-- Filtre sur les prix --%>
 			<div class="filtre">
-				<h3><spring:message code="f_prix"/></h3><br> 
+				<h3 class="titre_filtre"><spring:message code="f_prix"/></h3><br> 
 				<input type="radio" id="prix1" name="prix" value="100">
 				<label for="prix1"><spring:message code="f_p1"/></label><br> 
 				
@@ -52,7 +52,7 @@
 				<label for="prix4">Au delà de 600€</label><br>
 			</div>
 			
-			<button type="submit"><spring:message code="f_recherche"/></button>
+			<button type="submit" class="bouton_filtre"><spring:message code="f_recherche"/></button>
 		</form>
 	</div>
 	<div class="content">
