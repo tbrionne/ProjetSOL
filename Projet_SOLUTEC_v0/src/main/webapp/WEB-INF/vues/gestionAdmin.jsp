@@ -12,34 +12,42 @@
 	
 	
 <!-- 	Body : -->
-
+	
 	<h3>Ajout d'un produit à la base de données : </h3>
-	<form action="adminAjouter" method="POST">
-		<table>
-			<tr>
-				<td>Nom : <input type="text"  name="produit_name"/></td>
-<!-- 				<td>Catégorie :<input type="number"  name="categorie_id"/></td> -->
-<!-- 				Le menu déroulant renvoie un string à categorie_id au lieu d'un integer. -->
-			<td><label for="categorie">Catégories :</label>
-				<select name="categorie_id" id="categorie">
-				    <option value="">-Choisissez une catégorie-</option>
-				    <option value="1">Réfrigérateur</option>
-				    <option value="2">Lave-vaisselle</option>
-				    <option value="3">Four</option>
-				    <option value="4">Plaque de cuisson</option>
-				</select></td>	
-				<td>Marque : <input type="text"  name="marque"/></td>
-			</tr>
-			<tr>	
-				<td>Prix :<input type="text"  name="prix"/></td>
-				<td>Nom de la photo : <input type="text"  name="photo"/></td>
-<!-- 			<td>CLASSE ENERGETIQUE<input type="text"  name="classe_energetique_id"/></td>  -->
-				<td><input type="submit" value="Ajouter"/></td>
-			</tr>
-		</table>	
-		
-		
-	</form>	
+		<form action="adminAjouter" method="POST">
+			<table>
+				<tr>
+					<td>Nom : <input type="text"  name="produit_name"/></td>
+					<td><label for="categorie">Catégories :</label>
+						<select name="categorie_id" id="categorie">
+						    <option value="">-Choisissez une catégorie-</option>
+						    <option value="1">Réfrigérateur</option>
+						    <option value="2">Lave-vaisselle</option>
+						    <option value="3">Four</option>
+						    <option value="4">Plaque de cuisson</option>
+						</select>
+					</td>	
+					<td>Marque : <input type="text"  name="marque"/></td>
+				</tr>
+				<tr>
+					<td><label for="classeEnergetique">Classe énergétique :</label>
+						<select name="classe_energetique_id" id="classeEnergetique">
+						    <option value="">-Choisissez une classe-</option>
+						    <option value="1">A</option>
+						    <option value="2">B</option>
+						    <option value="3">C</option>
+						    <option value="4">D</option>
+						    <option value="5">E</option>
+						    <option value="6">F</option>
+						</select>
+					</td>	
+					<td>Prix : <input type="number"  name="prix"/></td>
+					<td>Nom de la photo : <input type="text"  name="photo"/></td>
+					<td><input type="submit" value="Ajouter"/></td>
+				</tr>
+			</table>	
+		</form>	
+
 	
 	
 	<!-- 	Tableau récapitulatif des produits : -->
@@ -53,7 +61,7 @@
 				<th>CATEGORIE</th>
 				<th>MARQUE</th>
 				<th>PRIX</th>
-<!-- 				<th>CLASSE ENERGETIQUE</th> -->
+				<th>CLASSE ENERGETIQUE</th>
 				<th>PHOTO</th>
 			</tr>
 			<c:forEach items="${produits}" var="p">
@@ -65,7 +73,7 @@
 					<td><input type="text" value="${p.categorie_id}" name="CATEGORIE" /></td>
 					<td><input type="text" value="${p.marque}" name="MARQUE" /></td>
 					<td><input type="text" value="${p.prix}" name="PRIX" /></td>
-<%-- 					<td><input type="text" value="${p.classe_energetique_id}" name="CLASSE ENERGETIQUE" /></td> --%>
+					<td><input type="text" value="${p.classe_energetique_id}" name="CLASSE ENERGETIQUE" /></td>
 					<td><input type="text" value="${p.photo}" name="PHOTO" /></td>
 					<td><input type="submit" value="Modifier" /></td>
 					<td><a href="adminSupprimer?produit_id=${p.produit_id}">Supprimer</a></td>

@@ -85,7 +85,7 @@ public class ControleursAdmin {
 
 		// Ajout d'un produit dans la base de données :
 		@PostMapping(path="/adminAjouter")
-		public String addProduitAdmin (@ModelAttribute("produit") Produit produit, HttpServletRequest request,
+		public String addProduitAdmin (@ModelAttribute("produit") Produit produit,
 				BindingResult result, Map<String, Object> model) {
 			if(produit.getCategorie_id()!=null &&
 					produit.getMarque()!=null &&
