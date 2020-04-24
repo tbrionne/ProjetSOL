@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,11 +21,11 @@ public class Produit {
 	@Column(name = "MARQUE", nullable=false)
 	private String marque;
 	@Column(name = "PRIX", nullable=false)
-	private String prix;
+	private Integer prix;
 	@Column(name = "PHOTO", nullable=false)
 	private String photo;
-	@Column(name = "CLASSE_ENERGETIQUE_ID", nullable=false)
-	private String classe_energetique_id;
+	@Column(name="CLASSE_ENERGETIQUE_ID")
+	private Integer classe_energetique_id;
 	
 	//Getters and setters
 	public Integer getProduit_id() {
@@ -54,10 +52,10 @@ public class Produit {
 	public void setMarque(String marque) {
 		this.marque = marque;
 	}
-	public String getPrix() {
+	public Integer getPrix() {
 		return prix;
 	}
-	public void setPrix(String prix) {
+	public void setPrix(Integer prix) {
 		this.prix = prix;
 	}
 	public String getPhoto() {
@@ -66,12 +64,13 @@ public class Produit {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public String getClasse_Energetique_Id() {
+	public Integer getClasse_energetique_id() {
 		return classe_energetique_id;
 	}
-	public void setClasse_Energetique_Id(String classe_energetique_id) {
+	public void setClasse_energetique_id(Integer classe_energetique_id) {
 		this.classe_energetique_id = classe_energetique_id;
 	}
+	
 	
 	
 	

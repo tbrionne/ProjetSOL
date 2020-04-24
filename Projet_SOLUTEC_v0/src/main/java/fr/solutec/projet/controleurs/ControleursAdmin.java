@@ -53,7 +53,7 @@ public class ControleursAdmin {
 	@PostMapping(path = "/adminAjouter")
 	public String addProduitAdmin(@ModelAttribute("produit") Produit produit, HttpServletRequest request,
 			BindingResult result, Map<String, Object> model) {
-<<<<<<< HEAD
+
 		if(produit.getCategorie_id()!=null &&
 				produit.getMarque()!=null &&
 				produit.getPrix()!=null &&
@@ -65,7 +65,7 @@ public class ControleursAdmin {
 //			produit.setPrix(request.getParameter("prix"));
 //			produit.setPhoto(request.getParameter("photo")); 
 //			produit.setClasse_Energetique_Id(request.getParameter("classe_energetique_id"));
-=======
+
 		if (produit.getCategorie_id() != null && produit.getMarque() != null && produit.getPrix() != null
 				&& produit.getPhoto() != null && produit.getProduit_name() != null) {
 			produit.setProduit_name(request.getParameter("produit_name"));
@@ -74,7 +74,7 @@ public class ControleursAdmin {
 			produit.setPrix(Integer.parseInt(request.getParameter("prix")));
 			produit.setPhoto(request.getParameter("photo"));
 			produit.setClasse_energetique_id(Integer.parseInt(request.getParameter("classe_energetique_id")));
->>>>>>> branch 'master' of https://github.com/tbrionne/ProjetSOL.git
+
 			produitRepository.save(produit);
 			model.put("produits", produitRepository.findAll());
 			return "gestionAdmin";
@@ -83,11 +83,13 @@ public class ControleursAdmin {
 			return "gestionAdmin";
 		}
 	}
-
+		return"gestionAdmin";
+	}
+	
 	
 	
 	// Modification d'un produit dans la base de données :
-<<<<<<< HEAD
+
 	@PostMapping(path="/adminModifier")
 	public String setProduitAdmin (@ModelAttribute("produit") Produit produit, HttpServletRequest request,
 			BindingResult result, Map<String, Object> model) {
@@ -98,7 +100,7 @@ public class ControleursAdmin {
 		System.out.println("entre dans le post modifier");
 		
 		produit.setMarque(request.getParameter("marque"));
-		produit.setPrix(request.getParameter("prix"));
+		produit.setPrix(Integer.parseInt(request.getParameter("prix")));
 		produit.setPhoto(request.getParameter("photo")); 
 		
 //		produit.setClasse_Energetique_Id(request.getParameter("classe_energetique_id"));
@@ -112,7 +114,7 @@ public class ControleursAdmin {
 	
 	
 	
-=======
+
 //	@PostMapping(path="/adminModifier")
 //	public String setProduitAdmin (@ModelAttribute("produit") Produit produit, HttpServletRequest request,
 //			BindingResult result, Map<String, Object> model) {
@@ -127,7 +129,7 @@ public class ControleursAdmin {
 //		return "gestionAdmin";
 //	}
 
->>>>>>> branch 'master' of https://github.com/tbrionne/ProjetSOL.git
+
 	// Suppression d'un produit :
 	@GetMapping(path = "/adminSupprimer")
 	public String deleteProduitAdmin(HttpServletRequest request, Map<String, Object> model) {

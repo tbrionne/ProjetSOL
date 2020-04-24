@@ -7,55 +7,70 @@
 <link rel="stylesheet" href="css/utilisateur.css">
 <%@include file="/WEB-INF/inc/header.jsp"%>
 <div class="container">
-	<div class="aside">
-		<h1>Filtres</h1>
-		<div class="filtre">
-			Marque<br>
-			<c:forEach items="${marques}" var="m">
-				<input type="checkbox" id="{m}" name="${m}">
-				<label for="{m}">${m}</label><br>
-				<br>
-			</c:forEach>
-		</div>
-		<div class="filtre">
-			Classe Energétique<br>
-			<c:forEach items="${classesEnergetiques}" var="ce">
-				<input type="checkbox" id="{ce}" name="${ce}">
-				<label for="{ce}">${ce}</label><br>
-				<br>
-			</c:forEach>
-		</div>
-		<div class="filtre">
-			Prix<br>
-			<input type="checkbox" id="prix1" name="orix1">
-			<label for="prix1">0 - 100 €</label><br>
-			<input type="checkbox" id="prix2" name="prix2">
-			<label for="prix2">100 - 500 €</label><br>
-			<input type="checkbox" id="prix3" name="prix3">
-			<label for="prix3">500 - 1000 €</label><br>
-			<input type="checkbox" id="prix4" name="prix4">
-			<label for="prix4"> + 1000 €</label><br>
-		</div>
-		<button type="submit">Rechercher</button>
+
+		<%-- Filtre sur les marques --%>
+		<div class="aside">
+		<form action="filtre" method="post">
+			<h1>Filtres</h1>
+			<div class="filtre">
+				<h3>Marques: </h3><br>
+				<c:forEach items="${marques}" var="m">
+					<input type="checkbox" id="${m}" name="marque" value="${m}">
+					<label for="${m}">${m}</label>
+					<br>
+					<br>
+				</c:forEach>
+			</div>
+			
+			<%-- Filtre sur les classes energetique --%>
+			<div class="filtre">
+				<h3>Classe Energétique: </h3><br>
+				<c:forEach items="${classesEnergetiques}" var="ce">
+					<input type="checkbox" id="${ce}" name="ce" value="${ce}">
+					<label for="${ce}">${ce}</label>
+					<br>
+					<br>
+				</c:forEach>
+			</div>
+			
+			<%-- Filtre sur les prix --%>
+			<div class="filtre">
+				<h3>Prix: </h3><br> 
+				<input type="radio" id="prix1" name="prix" value="100">
+				<label for="prix1">Jusqu'à 100€</label><br> 
+				
+				<input type="radio" id="prix2" name="prix" value="200"> 
+				<label for="prix2">Jusqu'à 200€</label><br>
+				 
+				<input type="radio" id="prix3" name="prix" value="400">
+				<label for="prix3">Jusqu'à 400€</label><br>
+				 
+				<input type="radio" id="prix4" name="prix" value="600"> 
+				<label for="prix4">Jusqu'à 600€</label><br>
+			</div>
+			
+			<button type="submit">Rechercher</button>
+		</form>
 	</div>
 	<div class="content">
-	
+
 		<!-- tableau qui va afficher les utilisateurs enregistrés
 		dans la base de données grâce à une boucle forEach -->
 		<c:forEach items="${categorie}" var="p">
-		
+
 			<article>
-				<Table border="1">
+				<Table style="width: 100%">
 					<tr>
-						<td><img src="img/${p.photo}" /></td>
-						<td style="width: 100%">
+						<td style="width: 40%"><img src="img/${p.photo}"
+							style="display: block; margin-left: auto; margin-right: auto;" /></td>
+						<td>
 							<h2>${p.produit_name}</h2>
 							<ul>
 
-								<li> ${nomCat[p.categorie_id-1]}</li>
+								<li>${nomCat[p.categorie_id-1]}</li>
 								<li>${p.marque}</li>
 								<li>${p.prix}€</li>
-								<%-- <li>${p.classe_energetique_id}</li> --%>
+								<li>${nomClasseEnergetique[p.classe_energetique_id-1]}</li>
 							</ul>
 						</td>
 
@@ -64,11 +79,6 @@
 			</article>
 		</c:forEach>
 
-		<article>
-			<h1>Produit 2</h1>
-			<p>Caractéristiques produit</p>
-			<p>photo produit</p>
-		</article>
 	</div>
 </div>
 <%@include file="/WEB-INF/inc/footer.jsp"%>
