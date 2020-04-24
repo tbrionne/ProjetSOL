@@ -43,6 +43,9 @@ public interface ProduitRepository extends CrudRepository<Produit, Integer> {
 	// Filtrer les produits par prix
 	@Query("SELECT p FROM Produit p where p.prix <=?1")
 	Collection<Produit> selectPrix(Integer n);
+	// Filtrer les produits par la borne de prix supérieure
+	@Query("SELECT p FROM Produit p where p.prix >?1")
+	Collection<Produit> selectPrixMax(Integer n);
 	
 	// Filtres doubles
 	
@@ -61,5 +64,9 @@ public interface ProduitRepository extends CrudRepository<Produit, Integer> {
 	// Filtrer par marques, classe énergétique et prix
 	@Query("SELECT p FROM Produit p WHERE p.marque = ?1 AND p.classe_energetique_id = ?2 AND p.prix <=?3")
 	Collection<Produit> selectParFiltres(String s, Integer n1, Integer n2);
+	
+	// Filtrer par marques, classe énergétique et prix en borne supérieure
+		@Query("SELECT p FROM Produit p WHERE p.marque = ?1 AND p.classe_energetique_id = ?2 AND p.prix >?3")
+		Collection<Produit> selectParFiltresMax(String s, Integer n1, Integer n2);
 
 }
