@@ -56,14 +56,41 @@ public class ControleursAdmin {
 	// Tri des données :
 		@GetMapping(path="/adminTri")
 		public String sortProduit(HttpServletRequest request, Map<String, Object> model) {
+			// Tri produits par ID
 			if(request.getParameter("critere").equals("produit_idAsc"))
 				model.put("produits", produitRepository.selectProduitParIdAsc());
 			if(request.getParameter("critere").equals("produit_idDesc"))
 				model.put("produits", produitRepository.selectProduitParIdDesc());
+			// Tri produits par NOM
 			if(request.getParameter("critere").equals("produit_nameAsc"))
 				model.put("produits", produitRepository.selectProduitParNomAsc());
 			if(request.getParameter("critere").equals("produit_nameDesc"))
 				model.put("produits", produitRepository.selectProduitParNomDesc());
+			// Tri produits par CATEGORIE
+			if(request.getParameter("critere").equals("categorie_idAsc"))
+				model.put("produits", produitRepository.selectProduitParCategorieAsc());
+			if(request.getParameter("critere").equals("categorie_idDesc"))
+				model.put("produits", produitRepository.selectProduitParCategorieDesc());
+			// Tri produits par MARQUE
+			if(request.getParameter("critere").equals("marqueAsc"))
+				model.put("produits", produitRepository.selectProduitParMarqueAsc());
+			if(request.getParameter("critere").equals("marqueDesc"))
+				model.put("produits", produitRepository.selectProduitParMarqueDesc());
+			// Tri produits par PRIX
+			if(request.getParameter("critere").equals("prixAsc"))
+				model.put("produits", produitRepository.selectProduitParPrixAsc());
+			if(request.getParameter("critere").equals("prixDesc"))
+				model.put("produits", produitRepository.selectProduitParPrixDesc());
+			// Tri produits par CATEGORIE ENERGETIQUE
+			if(request.getParameter("critere").equals("classe_energetique_idAsc"))
+				model.put("produits", produitRepository.selectProduitParClasseEnergetiqueAsc());
+			if(request.getParameter("critere").equals("classe_energetique_idDesc"))
+				model.put("produits", produitRepository.selectProduitParClasseEnergetiqueDesc());
+			// Tri produits par PHOTO
+			if(request.getParameter("critere").equals("photoAsc"))
+				model.put("produits", produitRepository.selectProduitParPhotoAsc());
+			if(request.getParameter("critere").equals("photoDesc"))
+				model.put("produits", produitRepository.selectProduitParPhotoDesc());
 			return "gestionAdmin";
 		}
 
@@ -101,6 +128,7 @@ public class ControleursAdmin {
 				
 				produitRepository.save(produit);
 				model.put("produits", produitRepository.findAll());
+				model.put("ajout", "ok");
 				return "gestionAdmin";
 			} else {
 				System.out.println("echec ajout");
@@ -108,11 +136,7 @@ public class ControleursAdmin {
 			}	
 		}
 
-
-
-	
-	
-	
+		
 	// Modification d'un produit dans la base de données :
 
 	@PostMapping(path="/adminModifier")
@@ -128,7 +152,7 @@ public class ControleursAdmin {
 		produit.setClasse_energetique_id(Integer.parseInt(request.getParameter("classe_energetique_id")));
 		produitRepository.save(produit);
 		model.put("produits", produitRepository.findAll());
-		model.put("msg", "ok");
+		model.put("modification", "ok");
 		return "gestionAdmin";
 	}
 	
@@ -140,6 +164,7 @@ public class ControleursAdmin {
 			produitRepository.deleteById(Integer.parseInt(request.getParameter("produit_id")));
 		}
 		model.put("produits", produitRepository.findAll());
+		model.put("suppression", "ok");
 		return "gestionAdmin";
 	}
 

@@ -18,18 +18,47 @@ public interface ProduitRepository extends CrudRepository<Produit, Integer> {
 	
 	// Tri
 	
-	// Tri produits par ID descendant
+	// Tri produits par ID
 	@Query("SELECT p FROM Produit p ORDER BY p.produit_id asc")
 	Collection<Produit> selectProduitParIdAsc();
-	
 	@Query("SELECT p FROM Produit p ORDER BY p.produit_id desc")
 	Collection<Produit> selectProduitParIdDesc();
 	
+	// Tri produits par NOM
 	@Query("SELECT p FROM Produit p ORDER BY p.produit_name asc")
 	Collection<Produit> selectProduitParNomAsc();
-
 	@Query("SELECT p FROM Produit p ORDER BY p.produit_name desc")
 	Collection<Produit> selectProduitParNomDesc();
+	
+	// Tri produits par CATEGORIE
+	@Query("SELECT p FROM Produit p ORDER BY p.categorie_id asc")
+	Collection<Produit> selectProduitParCategorieAsc();
+	@Query("SELECT p FROM Produit p ORDER BY p.categorie_id desc")
+	Collection<Produit> selectProduitParCategorieDesc();
+	
+	// Tri produits par Marque
+	@Query("SELECT p FROM Produit p ORDER BY p.marque asc")
+	Collection<Produit> selectProduitParMarqueAsc();
+	@Query("SELECT p FROM Produit p ORDER BY p.marque desc")
+	Collection<Produit> selectProduitParMarqueDesc();
+	
+	// Tri produits par PRIX
+	@Query("SELECT p FROM Produit p ORDER BY p.prix asc")
+	Collection<Produit> selectProduitParPrixAsc();
+	@Query("SELECT p FROM Produit p ORDER BY p.prix desc")
+	Collection<Produit> selectProduitParPrixDesc();
+	
+	// Tri produits par CLASSE ENERGETIQUE
+	@Query("SELECT p FROM Produit p ORDER BY p.classe_energetique_id asc")
+	Collection<Produit> selectProduitParClasseEnergetiqueAsc();
+	@Query("SELECT p FROM Produit p ORDER BY p.classe_energetique_id desc")
+	Collection<Produit> selectProduitParClasseEnergetiqueDesc();
+	
+	// Tri produits par PHOTO
+	@Query("SELECT p FROM Produit p ORDER BY p.photo asc")
+	Collection<Produit> selectProduitParPhotoAsc();
+	@Query("SELECT p FROM Produit p ORDER BY p.photo desc")
+	Collection<Produit> selectProduitParPhotoDesc();	
 
 
 	// Filtres simples
