@@ -18,7 +18,7 @@
 	position: relative;
 	top: 0;
 	min-height: 1000px;
-	/*pour que le conteneur ait une taille min de 800px et positionner le footer dessous*/
+	/*pour que le conteneur ait une taille min de 1000px et positionner le footer dessous*/
 }
 
 .aside {
@@ -30,7 +30,7 @@
 }
 
 .content {
-	width: 80%;
+	width: 70%;
 	margin-left: 25%;
 }
 
@@ -45,13 +45,18 @@ article {
 
 article li {
 	line-height: 1.5em;
-	list-style-type: circle;
+	list-style-type: none;
 }
+article li::before {content: "• "; color: #004080}
 
 .filtre {
 	position: relative;
 	margin: 20px;
+	padding:0;
 	text-align: left;
+}
+#classe_energetique{
+	text-align: center;
 }
 
 .titre_filtre {
@@ -131,7 +136,6 @@ article li {
 }
 
 .text_basdepage {
-	border: 2px solid black;
 	-moz-border-radius: 7px;
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
@@ -141,7 +145,7 @@ article li {
 	text-align: center;
 	background-color: white;
 	color: black;
-	font-size: 25pt;
+	font-size: 20pt;
 	text-align: center;
 	padding: 30px 30px 30px;
 	margin: 50px 30px 50px;

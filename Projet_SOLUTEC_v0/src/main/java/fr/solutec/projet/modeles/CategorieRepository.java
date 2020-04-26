@@ -10,9 +10,10 @@ public interface CategorieRepository extends CrudRepository<Categorie, Integer> 
 	@Query("SELECT p FROM Produit p where p.categorie_id =?1")
 	Collection<Object> selectCategorie(Integer i);
 
-	@Query("SELECT C.nomCategorie FROM Categorie C ") // , Produit p where p.categorie_id =C.idCategorie
+	@Query("SELECT C.nomCategorie FROM Categorie C") // , Produit p where p.categorie_id =C.idCategorie
 	Collection<Object> selectCategorieName();
 
-
+	@Query("SELECT C.nomCategorie FROM Categorie C where categorie_id=?1 ")
+	Collection<String> selectCategorieNameTitre(Integer i);
 
 }
