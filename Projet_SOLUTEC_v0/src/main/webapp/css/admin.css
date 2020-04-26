@@ -21,6 +21,10 @@ header {
 	color: #004080;
 }
 
+.msg_erreur
+{
+	color:red;
+}
 
 /* Form */
 

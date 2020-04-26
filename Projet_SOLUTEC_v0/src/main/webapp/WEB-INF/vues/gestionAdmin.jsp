@@ -21,6 +21,14 @@ ${session["connecte"]}
 <br>
 <h3>Ajout d'un produit à la base de données :</h3>
 
+	<c:if test="${!empty msg_erreur}">
+			<h4 class="msg_erreur">Erreur : Tous les champs doivent être remplis</h4>
+		</c:if>
+		
+		<c:if test="${!empty msg_erreur_photo}">
+			<h4 class="msg_erreur">Erreur : Aucune photo n'a été sélectionnée</h4>
+		</c:if>
+
 <c:if test="${!empty ajout}">
 	<h5 class="succes">Ajout effectué avec succès</h5>
 </c:if>

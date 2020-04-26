@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,45 +97,64 @@ public class ControleursAdmin {
 
 
 		// Ajout d'un produit dans la base de données :
-		@PostMapping(path="/adminAjouter")
-		public String addProduitAdmin (@ModelAttribute("produit") Produit produit,
-				@RequestParam("fichierUpload") MultipartFile fichier, HttpServletRequest request,
-				BindingResult result, Map<String, Object> model) throws IOException {
-			
-			System.out.println((!fichier.isEmpty()));
-			
-			if(produit.getCategorie_id()!=null &&
-					produit.getMarque()!=null &&
-					produit.getPrix()!=null &&
-					produit.getPhoto()!=null &&
-					produit.getProduit_name()!=null &&
-					(!fichier.isEmpty())) {
-				
-				String cheminApplication = request.getSession().getServletContext().getRealPath("/");
-				String nomFichier = fichier.getOriginalFilename();
-				System.out.println(nomFichier); 
-				//String nomFichierSansChemin = nomFichier.substring(nomFichier.lastIndexOf(File.separator), 0);
-				String nomFichierSansChemin = nomFichier;
-				String nomDestination = cheminApplication + "img" + File.separator + nomFichierSansChemin;
-				
-				File fichierServeur = new File(nomDestination);
-				
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fichierServeur));
-				
-				stream.write(fichier.getBytes());
-				stream.close();
-				
-				produit.setPhoto(nomFichierSansChemin);
-				
-				produitRepository.save(produit);
-				model.put("produits", produitRepository.findAll());
-				model.put("ajout", "ok");
-				return "gestionAdmin";
-			} else {
-				System.out.println("echec ajout");
-				return "gestionAdmin";
-			}	
-		}
+
+				@PostMapping(path="/adminAjouter")
+				public String addProduitAdmin ( @ModelAttribute("produit") @Valid Produit produit, BindingResult result,  Map<String, Object> model,
+						@RequestParam("fichierUpload") @Valid MultipartFile fichier, HttpServletRequest request) throws IOException {
+					
+					if(result.hasErrors())
+					{
+						System.out.println(produit.getProduit_name().length());
+						model.put("msg_erreur", "erreur");
+						model.put("produits", produitRepository.findAll());
+						return "gestionAdmin";
+					}
+					
+					else 
+					{
+						if(!fichier.isEmpty())
+						{
+							String cheminApplication = request.getSession().getServletContext().getRealPath("/");
+							String nomFichier = fichier.getOriginalFilename();
+							System.out.println(nomFichier); 
+							//String nomFichierSansChemin = nomFichier.substring(nomFichier.lastIndexOf(File.separator), 0);
+							String nomFichierSansChemin = nomFichier;
+							String nomDestination = cheminApplication + "img" + File.separator + nomFichierSansChemin;
+							
+							File fichierServeur = new File(nomDestination);
+							
+							BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fichierServeur));
+							
+							stream.write(fichier.getBytes());
+							stream.close();
+							
+							produit.setPhoto(nomFichierSansChemin);
+							
+							produitRepository.save(produit);
+							model.put("produits", produitRepository.findAll());
+							return "gestionAdmin";
+						}
+						
+//						if(produit.getCategorie_id()!=null &&
+//								produit.getMarque()!=null &&
+//								produit.getPrix()!=null &&
+//								produit.getPhoto()!=null &&
+//								produit.getProduit_name()!=null &&
+//								(!fichier.isEmpty())) {
+//							
+							
+						 else {
+							System.out.println("echec ajout");
+							model.put("produits", produitRepository.findAll());
+							model.put("msg_erreur_photo", "erreur");
+							return "gestionAdmin";
+						}	
+					}
+						
+					
+					
+					
+				}
 
 		
 	// Modification d'un produit dans la base de données :
