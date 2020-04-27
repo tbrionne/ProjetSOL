@@ -18,6 +18,7 @@
 ${session["connecte"]}
 
 <br>
+<div style="position: relative; left: 1100px;"><a href="admin">Se déconnecter</a></div>
 <br>
 <h3>Ajout d'un produit à la base de données :</h3>
 
